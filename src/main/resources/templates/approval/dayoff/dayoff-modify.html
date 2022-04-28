@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+        <title>Dayoff Modify</title>
+
+        <link th:href="@{/css/table-approver-line.css}" rel="stylesheet">
+        <link th:href="@{/css/styles.css}" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/css/tempusdominus-bootstrap-4.min.css" integrity="sha512-3JRrEUwaCkFUBLK1N8HehwQgu8e23jTH4np5NHOmQOobuC4ROQxFwFgBLTnhcnQRMs84muMh0PnnwXlPq5MGjg==" crossorigin="anonymous" referrerpolicy="no-referrer" rel="stylesheet">
+    </head>
+    <body class="body-inner-frame">
+        <div class="container">
+            <div class="card">
+                <th:block th:replace="section/common/docs-header-mod :: docs-header-mod-section"></th:block>
+            
+                <div class="card-body">
+                    <th:block th:replace="section/common/docs-title-mod :: docs-title-mod-section"></th:block>
+                    <br>
+
+                    <div class="form-row">
+                        <label class="col-6 col-form-label col-form-label-sm">기간 선택시 주말은 포함되지 않습니다.</label>
+                        <div class="form-group col-6">
+                            <div class="float-right">
+                                <button class="btn btn-outline-info mr-1" type="button" onclick="addRow()"><i class="fas fa-plus-square mr-2"></i>추가</button>
+                                <button class="btn btn-outline-secondary" type="button" onclick="deleteRow()"><i class="fas fa-trash-alt mr-2"></i>삭제</button>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <div id="dayoffRowSection">
+                        <div class="form-row dayoff-row" id="dayoffRow0">
+                            <label class="col-2 col-form-label text-muted"><i class="far fa-calendar-check mr-2"></i>구분 및 기간</label>
+                            <div class="form-group col-2">
+                                <select class="form-control dayoff-code" id="codeSelector0">
+                                    <option value="" selected disabled>휴가 선택</option>
+                                    <option th:each="dayoff : ${dayoffList}" th:value="${dayoff.code}" th:text="${dayoff.value}"></option>
+                                </select>
+                            </div>
+
+                            <div class="form-group col-3">
+                                <div class="input-group mr-2" data-target-input="nearest">
+                                    <div class="input-group-prepend date-start-prepend" data-target="#dateStart0" data-toggle="datetimepicker">
+                                        <div class="input-group-text"><i class="fas fa-calendar-day"></i></div>
+                                    </div>
+                                    <input type="text" class="form-control text-center datetimepicker-input input-date-start" id="dateStart0" data-toggle="datetimepicker" data-target="#dateStart0" autocomplete="off" onchange="ckeckDate(this)">
+                                </div>
+                            </div>
+
+                            <div class="form-group col-3">
+                                <div class="input-group mr-2" data-target-input="nearest">
+                                    <div class="input-group-prepend date-end-prepend" data-target="#dateEnd0" data-toggle="datetimepicker">
+                                        <div class="input-group-text"><i class="fas fa-calendar-day"></i></div>
+                                    </div>
+                                    <input type="text" class="form-control text-center datetimepicker-input input-date-end" id="dateEnd0" data-toggle="datetimepicker" data-target="#dateEnd0" autocomplete="off" onchange="ckeckDate(this)">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group col-1">
+                                <input type="text" class="form-control text-center day-duration" id="duration0" readonly>
+                            </div>
+                            <div class="form-group col-1">
+                                <input type="text" class="form-control text-center day-count" id="count0" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group col-12">
+                            <textarea class="form-control" rows="4" id="content" th:text="${docs.content}" placeholder="내용을 작성하세요."></textarea>
+                        </div>
+                    </div>
+
+                    <br>
+                    <th:block th:replace="section/common/docs-attachments-mod :: docs-attachments-mod-section"></th:block>
+                </div>
+            </div>
+            
+            <th:block th:replace="section/approval/approval-line-button :: approval-line-button-section"></th:block>
+
+            <th:block th:replace="section/approval/approval-line-table :: approval-line-section"></th:block>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.slim.min.js" integrity="sha512-6ORWJX/LrnSjBzwefdNUyLCMTIsGoNP6NftMy2UAm1JBm6PRZCO1d7OHBStWpVFZLO+RerTvqX/Z9mBFfCJZ4A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js" integrity="sha512-Tn2m0TIpgVyTzzvmxLNuqbSJH3JP8jm+Cy3hvHrW7ndTDcJ1w5mBiksqDBb8GpE2ksktFvDB/ykZ0mDpsZj20w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.0/js/bootstrap.bundle.min.js" integrity="sha512-wV7Yj1alIZDqZFCUQJy85VN+qvEIly93fIQAN7iqDFCPEucLCeNFz4r35FCo9s6WrpdDQPi80xbljXB8Bjtvcg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script th:src="@{/js/common/set-moment-locale-ko.js}"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/js/tempusdominus-bootstrap-4.min.js" integrity="sha512-k6/Bkb8Fxf/c1Tkyl39yJwcOZ1P4cRrJu77p83zJjN2Z55prbFHxPs9vN7q3l3+tSMGPDdoH51AEU8Vgo1cgAA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+        <script th:src="@{/js/common/fetch-custom.js}"></script>
+        <script th:src="@{/js/common/attachements.js}"></script>
+        <script th:src="@{/js/common/open-popup.js}"></script>
+
+        <script th:src="@{/js/common/set-datetimepicker-default.js}"></script>
+
+        <script th:src="@{/js/approval/common/line-table.js}"></script>
+        <script th:src="@{/js/approval/common/approval-line-get.js}"></script>
+
+        <script th:src="@{/js/approval/common-sublist/sublist-modify.js}"></script>
+        <script th:src="@{/js/approval/dayoff/dayoff-sub.js}"></script>
+        <script th:src="@{/js/approval/dayoff/dayoff-modify.js}"></script>
+    </body>
+</html>

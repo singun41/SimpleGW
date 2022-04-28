@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <!-- 이 템플릿을 사용할 때 /js/board/board-view.js를 추가할 것. -->
+    <th:block th:fragment="board-view-header-section">
+        <div class="card-header card-header-custom">
+            <div class="row justify-content-between">
+                <label class="col-form-label col-form-label-sm text-muted ml-2" th:text="|[ ${docs.id} ]|" id="boardType"></label>
+                <label th:if="${docs.registered} == false" class="col-form-label col-form-label-sm text-danger">[임시 저장 문서]</label>
+                <label class="col-form-label col-form-label-sm text-muted text-right mr-2" th:text="|${docs.writerTeam} ${docs.writerJobTitle} ${docs.writerName}&nbsp;&nbsp;&nbsp;[ ${#strings.replace(docs.createdDate, '-', '. ')}.&nbsp;&nbsp;${docs.createdTime} ]|"></label>
+                <span class="d-none" th:text="${docs.id}" id="docsId"></span>
+            </div>
+        </div>
+    </th:block>
+</html>

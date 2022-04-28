@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+        <title>Overtime Write</title>
+
+        <link th:href="@{/css/table-approver-line.css}" rel="stylesheet">
+        <link th:href="@{/css/styles.css}" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/css/tempusdominus-bootstrap-4.min.css" integrity="sha512-3JRrEUwaCkFUBLK1N8HehwQgu8e23jTH4np5NHOmQOobuC4ROQxFwFgBLTnhcnQRMs84muMh0PnnwXlPq5MGjg==" crossorigin="anonymous" referrerpolicy="no-referrer" rel="stylesheet">
+    </head>
+    <body class="mt-4">
+        <div class="container">
+            <div class="card">
+                <th:block th:replace="section/common/docs-header :: docs-header-section"></th:block>
+            
+                <div class="card-body">
+                    <th:block th:replace="section/common/docs-title :: docs-title-section"></th:block>
+                    <br>
+
+                    <div class="form-row">
+                        <div class="form-group col-6">
+                            <button class="btn btn-outline-info mr-2" type="button" onclick="addAll()"><i class="fas fa-user-plus mr-2"></i>전체 추가</button>
+                            <button class="btn btn-outline-info mr-2" type="button" onclick="checkAll()"><i class="fas fa-user-check mr-2"></i>전체 선택</button>
+                            <button class="btn btn-outline-secondary" type="button" onclick="checkRemove()"><i class="fas fa-user-times mr-2"></i>선택 삭제</button>
+                        </div>
+                        <div class="form-group col-6">
+                            <div class="float-right">
+                                <button class="btn btn-outline-info mr-2" type="button" onclick="addRow()"><i class="fas fa-plus-square mr-2"></i>추가</button>
+                                <button class="btn btn-outline-secondary" type="button" onclick="removeRow()"><i class="fas fa-trash-alt mr-2"></i>삭제</button>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <div id="overtimeSection">
+                        <div class="overtime-group" id="overtimeRow0">
+                            <br>
+                            <div class="form-row">
+                                <div class="form-group col-1">
+                                    <div class="form-check form-check-inline mt-2 ml-1">
+                                        <input class="form-check-input" type="checkbox" id="check0">
+                                        <label class="form-check-label text-muted" for="check0">선택</label>
+                                    </div>
+                                </div>
+                                <div class="form-group col-3">
+                                    <select class="form-control overtime-member">
+                                        <option value="" selected disabled>근무자</option>
+                                        <option th:each="member : ${memberList}" th:value="${member.id}" th:text="|${member.name} ${member.jobTitle}|"></option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-2">
+                                    <select class="form-control overtime-code">
+                                        <option value="" selected disabled>근무 유형</option>
+                                        <option th:each="overtime : ${overtimeList}" th:value="${overtime.code}" th:text="${overtime.value}"></option>
+                                    </select>
+                                </div>
+    
+                                <div class="form-group col-2">
+                                    <div class="input-group mr-2" data-target-input="nearest">
+                                        <div class="input-group-prepend date-prepend" data-target="#workDate0" data-toggle="datetimepicker">
+                                            <div class="input-group-text"><i class="fas fa-calendar-day"></i></div>
+                                        </div>
+                                        <input type="text" class="form-control text-center datetimepicker-input input-work-date" id="workDate0" data-toggle="datetimepicker" data-target="#workDate0" autocomplete="off">
+                                    </div>
+                                </div>
+    
+                                <div class="form-group col-2">
+                                    <div class="input-group mr-2" data-target-input="nearest">
+                                        <div class="input-group-prepend time-start-prepend" data-target="#timeStart0" data-toggle="datetimepicker">
+                                            <div class="input-group-text"><i class="fas fa-clock"></i></div>
+                                        </div>
+                                        <input type="text" class="form-control text-center datetimepicker-input input-time-start" id="timeStart0" data-toggle="datetimepicker" data-target="#timeStart0" autocomplete="off" onchange="checkTimeStart(this)">
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-2">
+                                    <div class="input-group mr-2" data-target-input="nearest">
+                                        <div class="input-group-prepend time-end-prepend" data-target="#timeEnd0" data-toggle="datetimepicker">
+                                            <div class="input-group-text"><i class="fas fa-clock"></i></div>
+                                        </div>
+                                        <input type="text" class="form-control text-center datetimepicker-input input-time-end" id="timeEnd0" data-toggle="datetimepicker" data-target="#timeEnd0" autocomplete="off" onchange="checkTimeStart(this)">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-12">
+                                    <input type="text" class="form-control input-remarks" placeholder="내용을 입력하세요." autocomplete="off">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <br>
+
+                    <div class="form-row">
+                        <div class="form-group col-12">
+                            <textarea class="form-control" rows="4" id="content" placeholder="기타 사항이 있는 경우 작성하세요."></textarea>
+                        </div>
+                    </div>
+
+                    <br>
+                    <th:block th:replace="section/common/docs-attachments :: docs-attachments-section"></th:block>
+                </div>
+            </div>
+            
+            <th:block th:replace="section/approval/approval-line-button :: approval-line-button-section"></th:block>
+
+            <th:block th:replace="section/approval/approval-line-table :: approval-line-section"></th:block>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.slim.min.js" integrity="sha512-6ORWJX/LrnSjBzwefdNUyLCMTIsGoNP6NftMy2UAm1JBm6PRZCO1d7OHBStWpVFZLO+RerTvqX/Z9mBFfCJZ4A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js" integrity="sha512-Tn2m0TIpgVyTzzvmxLNuqbSJH3JP8jm+Cy3hvHrW7ndTDcJ1w5mBiksqDBb8GpE2ksktFvDB/ykZ0mDpsZj20w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.0/js/bootstrap.bundle.min.js" integrity="sha512-wV7Yj1alIZDqZFCUQJy85VN+qvEIly93fIQAN7iqDFCPEucLCeNFz4r35FCo9s6WrpdDQPi80xbljXB8Bjtvcg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script th:src="@{/js/common/set-moment-locale-ko.js}"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/js/tempusdominus-bootstrap-4.min.js" integrity="sha512-k6/Bkb8Fxf/c1Tkyl39yJwcOZ1P4cRrJu77p83zJjN2Z55prbFHxPs9vN7q3l3+tSMGPDdoH51AEU8Vgo1cgAA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+        <script th:src="@{/js/common/fetch-custom.js}"></script>
+        <script th:src="@{/js/common/attachements.js}"></script>
+        <script th:src="@{/js/common/open-popup.js}"></script>
+
+        <script th:src="@{/js/common/set-datetimepicker-default.js}"></script>
+
+        <script th:src="@{/js/approval/common/line-table.js}"></script>
+        
+        <script th:src="@{/js/approval/common-sublist/sublist-write.js}"></script>
+        <script th:src="@{/js/approval/overtime/overtime-sub.js}"></script>
+        <script th:src="@{/js/approval/overtime/overtime-write.js}"></script>
+    </body>
+</html>

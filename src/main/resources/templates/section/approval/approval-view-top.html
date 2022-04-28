@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <th:block th:fragment="approval-view-top-section">
+        <div class="form-row d-print-none">
+            <div class="col-6">
+                <button class="btn btn-outline-info mr-2" type="button" onclick="window.print()"><i class="fas fa-print mr-2"></i>인쇄</button>
+                <th:block th:replace="section/common/docs-share-button :: docs-share-button-section"></th:block>
+            </div>
+            <div class="col-6">
+                <div class="float-right">
+                    <th:block th:replace="section/approval/approval-owner-button :: approval-owner-section"></th:block>
+                    
+                    <div th:if="${currentApprover} == true">
+                        <th:block th:replace="section/approval/approval-handling-button :: approval-handling-section"></th:block>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </th:block>
+</html>

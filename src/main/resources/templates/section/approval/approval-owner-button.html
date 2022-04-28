@@ -1,0 +1,8 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <th:block th:fragment="approval-owner-section">
+        <button class="btn btn-outline-secondary mr-1" type="button" th:if="${updatable} == true" id="btnCopyApprovalDocs" onclick="copyApproval()"><i class="fas fa-copy mr-2"></i>새 문서로 복사</button>
+        <a class="btn btn-outline-success mr-1" role="button" th:if="${updatable} == true" th:href="|modifypage/${docs.id}|"><i class="fas fa-edit mr-2"></i>수정</a>
+        <button class="btn btn-outline-danger" type="button" th:if="${deletable} == true" onclick="deleteApproval()"><i class="fas fa-trash-alt mr-2"></i>삭제</button>
+    </th:block>
+</html>

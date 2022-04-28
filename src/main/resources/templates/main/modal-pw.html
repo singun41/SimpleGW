@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <th:block th:fragment="mypw">
+        <div class="modal fade" id="mypwForm" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <label class="col-form-label col-form-label-card-header-lg text-info"><i class="fas fa-user-lock mr-2"></i>비밀번호 변경</label>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="form-row">
+                            <label class="col-12 col-form-label col-form-label-sm text-right text-danger" th:text="${pwUpdateGuide}"></label>
+                        </div>
+                        <div class="form-row">
+                            <label class="col-4 col-form-label">현재 비밀번호</label>
+                            <div class="form-group col-8">
+                                <input type="password" class="form-control text-center" id="originalPw" onkeyup="checkCapsLock(event)">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <label class="col-4 col-form-label">새 비밀번호</label>
+                            <div class="form-group col-8">
+                                <input type="password" class="form-control text-center" id="newPw" onkeyup="checkCapsLock(event)">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <label class="col-4 col-form-label">비밀번호 확인</label>
+                            <div class="form-group col-8">
+                                <input type="password" class="form-control text-center" id="newPwCheck" onkeyup="checkCapsLock(event)">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <label class="col-12 col-form-label col-form-label-sm text-right">변경시 ERP 비밀번호도 동일하게 변경됩니다.</label>
+                        </div>
+                        <div class="form-row">
+                            <label class="col-12 col-form-label col-form-label-sm text-center text-danger" id="capslockMsg"></label>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-success mr-2" onclick="updateMyPw()"><i class="fas fa-user-check mr-2"></i>저장</button>
+                        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal" onclick="clearPwForm()"><i class="fas fa-window-close mr-2"></i>닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </th:block>
+</html>

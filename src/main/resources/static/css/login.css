@@ -1,0 +1,22 @@
+body {
+    background-image: url("../images/building-glass.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+}
+
+main {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.row {
+    height: 100vh;
+}
+
+span {
+    width: 65px;
+}
+
+.card, .card-header, .card-body, .card-footer {
+    background-color: rgba(0, 0, 0, 0.3);
+}

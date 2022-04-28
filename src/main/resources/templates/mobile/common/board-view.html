@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <!-- 이 템플릿을 사용할 때 /js/board/board-view.js를 추가할 것. -->
+    <th:block th:fragment="board-view-section">
+        <div class="card">
+            <th:block th:replace="mobile/common/board-view-header :: board-view-header-section"></th:block>
+            
+            <div class="card-body">
+                <div class="row justify-content-center">
+                    <h6 id="docsTitle" class="font-weight-bold" th:text="${docs.title}"></h6>
+                </div>
+                <br><br>
+                <div class="row">
+                    <div class="container" id="docsContent" th:utext="${docs.content}"></div>
+                </div>
+            </div>
+        </div>
+    </th:block>
+</html>

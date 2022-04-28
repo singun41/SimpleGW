@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <!--
+        이 템플릿을 사용할 때 아래 js를 추가할 것.
+        /js/common/set-datetimepicker-default.js, /js/common/docs-options.js
+    -->
+    <th:block th:fragment="docs-options-section">
+        <div class="card mt-4" id="docsOptionsArea">
+            <div class="card-header card-header-custom">
+                <div class="row">
+                    <label class="form-check-label col-form-label-sm text-muted ml-2" for="useOptions">
+                        <i class="fas fa-cogs custom-card-header-fas-icon-sm"></i>옵션 사용
+                    </label>
+                    <div class="form-check form-check-inline float-right">
+                        <input class="form-check-input ml-2" type="checkbox" id="useOptions" onclick="toggleOptions(this)">
+                    </div>
+
+                    <!-- <label class="col-6 col-form-label col-form-label-sm text-muted"><i class="fas fa-cogs custom-card-header-fas-icon-sm"></i>옵션</label>
+                    <div class="col-6">
+                        <div class="form-check form-check-inline float-right">
+                            <label class="form-check-label col-form-label-sm text-muted" for="useOptions">옵션 사용</label>
+                            <input class="form-check-input ml-2" type="checkbox" id="useOptions" onclick="toggleOptions()">
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        
+            <div class="card-body">
+                <div class="form-row">
+                    <form class="form-inline">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input mr-2 option-chk-list" type="checkbox" id="setDueDate" onclick="toggleDueDate(this)" disabled>
+                            <label class="form-check-label col-form-label-sm text-muted" for="setDueDate">게시 종료일 설정</label>
+                        </div>
+                        
+                        <div class="input-group mr-2" style="width: 12rem;" data-target-input="nearest">
+                            <div class="input-group-prepend" data-target="#dueDate" data-toggle="datetimepicker">
+                                <div class="input-group-text"><i class="fas fa-calendar-day"></i></div>
+                            </div>
+                            <input type="text" class="form-control text-center datetimepicker-input option-val-list" id="dueDate" data-toggle="datetimepicker" data-target="#dueDate" autocomplete="off" disabled>
+                        </div>
+
+                        <label class="col-form-label col-form-label-sm text-muted"> 설정한 날짜 이후에 리스트에서 숨김 처리됩니다.</label>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </th:block>
+</html>

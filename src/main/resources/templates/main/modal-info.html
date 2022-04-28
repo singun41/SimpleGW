@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <th:block th:fragment="myinfo">
+        <div class="modal fade" id="myinfoForm" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <label class="col-form-label col-form-label-card-header-lg text-info"><i class="fas fa-user-cog mr-2"></i>내 정보</label>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="form-row">
+                            <div class="form-group col-12">
+                                <img id="myPicture" src="" class="img-thumbnail rounded mx-auto d-block employee-face">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-12">
+                                <div class="input-group">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" accept="image/png, image/jpeg" id="pictureInput">
+                                        <label class="custom-file-label" for="pictureInput">사진 선택...</label>
+                                    </div>
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-primary" type="button" onclick="setPicture()"><i class="fas fa-portrait mr-2"></i>변경</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-5"><input type="text" class="form-control text-center" th:value="${myInfo.name}" id="myName" placeholder="이름" autocomplete="off"></div>
+                            <div class="form-group col-7"><input type="text" class="form-control text-center" th:value="${myInfo.nameEng}" id="myNameEng" placeholder="영문 이름" autocomplete="off"></div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-5"><input type="text" class="form-control text-center" th:value="${myInfo.jobTitle}" readonly></div>
+                            <div class="form-group col-7"><input type="text" class="form-control text-center" th:value="${myInfo.team}" readonly></div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-5"><input type="text" class="form-control text-center" th:value="${myInfo.tel}" readonly></div>
+                            <div class="form-group col-7"><input type="text" class="form-control text-center" th:value="${myInfo.mailAddress}" readonly></div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-5"><input type="text" class="form-control text-center" th:value="${myInfo.mobileNo}" id="myMobile" placeholder="모바일" autocomplete="off"></div>
+                            <div class="form-group col-3"><input type="text" class="form-control text-center" th:value="${myInfo.serviceDays}" readonly></div>
+                            <div class="form-group col-4"><input type="text" class="form-control text-center" th:value="${myInfo.dateHire} == null ? '' : |${#strings.replace(myInfo.dateHire, '-', '. ')}.|" readonly></div>
+                        </div>
+                        <div class="form-row">
+                            <label class="col-5 col-form-label text-muted text-center">생일 (연/월/일)</label>
+                            <div class="form-group col-3"><input type="number" id="year" min="1900" max="2020" class="form-control text-center" th:value="${#temporals.year(myInfo.birthday)}"></div>
+                            <div class="form-group col-2"><input type="number" id="month" min="1" max="12" class="form-control text-center" th:value="${#temporals.month(myInfo.birthday)}"></div>
+                            <div class="form-group col-2"><input type="number" id="day" min="1" max="31" class="form-control text-center" th:value="${#temporals.day(myInfo.birthday)}"></div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-success mr-2" onclick="updateMyInfo()"><i class="fas fa-user-check mr-2"></i>저장</button>
+                        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal"><i class="fas fa-window-close mr-2"></i>닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </th:block>
+</html>

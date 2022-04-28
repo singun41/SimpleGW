@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <!-- 이 템플릿을 사용할 때 /js/common/document-write.js, /js/common/attachments.js 를 추가할 것. -->
+    <th:block th:fragment="docs-header-section">
+        <div class="card-header card-header-custom">
+            <div class="row justify-content-between">
+                <label class="col-6 col-form-label col-form-label-sm text-muted"><i class="fas fa-edit custom-card-header-fas-icon-sm"></i>새 문서 작성</label>
+                <label class="col-6 col-form-label col-form-label-sm text-muted text-right" id="docsId"></label>
+            </div>
+        </div>
+    </th:block>
+</html>

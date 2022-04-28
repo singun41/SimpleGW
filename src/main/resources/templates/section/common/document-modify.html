@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <!-- 이 템플릿을 사용할 때 /js/common/document-modify.js, /js/common/attachments.js 를 추가할 것. -->
+    <th:block th:fragment="docs-modify-section">
+        <div class="card">
+            <th:block th:replace="section/common/docs-header-mod :: docs-header-mod-section"></th:block>
+        
+            <div class="card-body">
+                <th:block th:replace="section/common/docs-title-mod :: docs-title-mod-section"></th:block>
+        
+                <th:block th:replace="section/common/docs-ckeditor-mod :: docs-ckeditor-mod-section"></th:block>
+                <!-- 디자인 때문에 임시저장, 등록 버튼을 attachments-section에 배치. -->
+                <th:block th:replace="section/common/docs-attachments-mod :: docs-attachments-mod-section"></th:block>
+            </div>
+        </div>
+    </th:block>
+</html>

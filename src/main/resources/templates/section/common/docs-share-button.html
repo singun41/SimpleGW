@@ -1,0 +1,6 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <th:block th:fragment="docs-share-button-section">
+        <button th:if="${docs.registered} == true" class="btn btn-outline-info" type="button" onclick="openToPopup('/docs/share')"><i class="fas fa-share-square mr-2"></i>공유</button>
+    </th:block>
+</html>

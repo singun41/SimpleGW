@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset='utf-8'>
+        <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+        <title>Freeboard view</title>
+
+        <link th:href="@{/css/styles.css}" rel="stylesheet">
+    </head>
+    <body class="body-inner-frame">
+        <div class="container">
+            
+            <div class="form-row d-print-none">
+                <div class="col-6">
+                    <th:block th:replace="section/common/docs-view-common-button :: docs-view-common-button-section"></th:block>
+                </div>
+                <div class="col-6">
+                    <div class="float-right">
+                        <button class="btn btn-outline-secondary mr-1" type="button" th:if="${updatable} == true" onclick="copyFreeboard()"><i class="fas fa-copy mr-2"></i>새 문서로 복사</button>
+                        <a class="btn btn-outline-success mr-1" role="button" th:if="${updatable} == true" th:href="|modifypage/${docs.id}|"><i class="fas fa-edit mr-2"></i>수정</a>
+                        <button class="btn btn-outline-danger" type="button" th:if="${deletable} == true" onclick="deleteFreeboard()"><i class="fas fa-trash-alt mr-2"></i>삭제</button>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+            
+            <th:block th:replace="section/board/board-view :: board-view-section"></th:block>
+
+            <br>
+
+            <th:block th:replace="section/common/attachments-list :: attachments-list-section"></th:block>
+
+            <br>
+
+            <th:blcok th:replace="section/common/comments :: comment-section"></th:blcok>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.slim.min.js" integrity="sha512-6ORWJX/LrnSjBzwefdNUyLCMTIsGoNP6NftMy2UAm1JBm6PRZCO1d7OHBStWpVFZLO+RerTvqX/Z9mBFfCJZ4A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js" integrity="sha512-Tn2m0TIpgVyTzzvmxLNuqbSJH3JP8jm+Cy3hvHrW7ndTDcJ1w5mBiksqDBb8GpE2ksktFvDB/ykZ0mDpsZj20w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.0/js/bootstrap.bundle.min.js" integrity="sha512-wV7Yj1alIZDqZFCUQJy85VN+qvEIly93fIQAN7iqDFCPEucLCeNFz4r35FCo9s6WrpdDQPi80xbljXB8Bjtvcg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script th:src="@{/js/board/common/board-view.js}"></script>
+        <script th:src="@{/js/board/freeboard/freeboard-view.js}"></script>
+        <script th:src="@{/js/common/fetch-custom.js}"></script>
+        <script th:src="@{/js/common/comments.js}"></script>
+    </body>
+</html>

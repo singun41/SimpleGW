@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+        <title>Approval line</title>
+
+        <link th:href="@{/css/styles.css}" rel="stylesheet">
+
+        <link href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+    </head>
+    <body class="body-inner-frame">
+        <div class="container-fluid">
+
+            <div class="card mb-4">
+                <div class="card-header card-header-custom">
+                    <label class="col-form-label col-form-label-card-header-lg"><i class="fas fa-file-signature custom-card-header-fas-icon-sm"></i>결재라인</label>
+
+                    <div class="float-right">
+                        <div class="row">
+                            <div class="form-inline">
+                                <div class="form-group mr-2">
+                                    <select class="form-control" id="savedApprovalLine" onchange="selectSavedLine()"></select>
+                                </div>
+                            </div>
+    
+                            <button type="button" class="btn btn-outline-secondary mr-2" onclick="resetLine()"><i class="fas fa-undo mr-2"></i>리셋</button>
+                            <button type="button" class="btn btn-outline-success mr-2" onclick="saveLine()"><i class="fas fa-save mr-2"></i>저장</button>
+                            <button type="button" class="btn btn-outline-danger mr-2" onclick="deleteLine()"><i class="fas fa-trash-alt mr-2"></i>삭제</button>
+                            <button type="button" class="btn btn-outline-primary mr-2" onclick="applyLine()"><i class="fas fa-check mr-2"></i>적용</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="form-row">
+                        <div class="form-group col-7">
+                            <div class="card">
+                                <div class="card-header card-header-custom">
+                                    <div class="float-left">
+                                        <label class="col-form-label col-form-label-card-header">
+                                            <i class="fas fa-search custom-card-header-fas-icon-sm"></i>검색
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="float-right">
+                                        <form class="form-inline">
+                                            <select class="form-control mr-4" id="selectedTeam" onchange="setEmployeeList()">
+                                                <option value="" selected disabled>부서 선택</option>
+                                                <option value="all">전체</option>
+                                                <option th:each="team : ${teamList}" th:value="${team}" th:text="${team}"></option>
+                                            </select>
+    
+                                            <label class="mr-2" for="approvalType">구분</label>
+                                            <select class="form-control" id="approvalType">
+                                                <option value="approver" selected>결재</option>
+                                                <option value="referrer">참조</option>
+                                            </select>
+                                        </form>
+                                    </div>
+                                </div>
+    
+                                <div class="card-body">
+                                    <table class="table table-hover" id="employeeListTable">
+                                        <thead>
+                                            <tr class="text-center">
+                                                <th class="d-none">idx</th>
+                                                <th>부서</th>
+                                                <th>직위</th>
+                                                <th>이름</th>
+                                                <th><i class="fas fa-check"></i></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="employeeList"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-3">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr class="text-center">
+                                        <th class="d-none">idx</th>
+                                        <th><i class="fas fa-file-signature text-info mr-2"></i></th>
+                                        <th>결재</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="approver"></tbody>
+                            </table>
+                        </div>
+
+                        <div class="form-group col-2">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr class="text-center">
+                                        <th class="d-none">idx</th>
+                                        <th colspan="2"><i class="fas fa-user-check text-info mr-4"></i>참조</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="referrer"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.slim.min.js" integrity="sha512-6ORWJX/LrnSjBzwefdNUyLCMTIsGoNP6NftMy2UAm1JBm6PRZCO1d7OHBStWpVFZLO+RerTvqX/Z9mBFfCJZ4A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js" integrity="sha512-Tn2m0TIpgVyTzzvmxLNuqbSJH3JP8jm+Cy3hvHrW7ndTDcJ1w5mBiksqDBb8GpE2ksktFvDB/ykZ0mDpsZj20w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.0/js/bootstrap.bundle.min.js" integrity="sha512-wV7Yj1alIZDqZFCUQJy85VN+qvEIly93fIQAN7iqDFCPEucLCeNFz4r35FCo9s6WrpdDQPi80xbljXB8Bjtvcg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+        <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script>
+
+        <script th:src="@{/js/common/fetch-custom.js}"></script>
+        <script th:src="@{/js/approval/common/approval-line.js}"></script>
+    </body>
+</html>

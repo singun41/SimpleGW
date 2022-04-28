@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <!-- 이 템플릿을 사용할 때 /js/common/document-write.js, /js/common/attachments.js 를 추가할 것. -->
+    <th:block th:fragment="docs-title-section">
+        <div class="form-row">
+            <label class="col-12 col-form-label col-form-label-heading" id="documentKindTitle"></label>
+        </div>
+        <br>
+        <div class="form-row">
+            <div class="form-group col-12">
+                <input type="text" class="form-control" id="title" placeholder="제목을 작성하세요." autocomplete="off">
+            </div>
+        </div>
+    </th:block>
+</html>

@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <!-- 이 템플릿을 사용할 때 /js/common/document-write.js, /js/common/attachments.js 를 추가할 것. -->
+    <th:block th:fragment="docs-ckeditor-section">
+        <textarea id="ckeditorTextarea"></textarea>
+        <div class="form-row justify-content-between">
+            <label class="col-6 col-form-label col-form-label-sm text-muted">이미지를 붙일 경우 '드래그 앤 드랍'이 가능합니다.</label>
+            <label class="col-6 col-form-label col-form-label-sm text-muted text-right">여기를 클릭한 채로 움직이면 높이를 조절할 수 있습니다.<i class="fas fa-arrow-up ml-2"></i></label>
+        </div>
+    </th:block>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <!-- 이 템플릿을 사용할 때 /js/approval/approval-line-table.js를 추가할 것. -->
+    <th:block th:fragment="approval-line-section">
+        <div class="form-row">
+            <div class="form-group col-6">
+                <div class="card mb-4">
+                    <div class="card-header-sm">
+                        <label class="col-12 col-form-label text-muted"><i class="fas fa-file-signature custom-card-header-fas-icon-sm"></i>결재</label>
+                    </div>
+        
+                    <!-- 화면 렌더링 참고하기 위한 페이지로 실제로 사용할 때에는 approval-line-table.html을 사용한다. -->
+                    <div class="card-body" id="bodyApprover">
+
+                        <table class="approver-table-custom">
+                            <tbody id="tbodyApprover">
+                                <tr>
+                                    <td class="approver-table-td-header" id="headerApprover0-0"></td>
+                                    <td class="approver-table-td-header" id="headerApprover0-1"></td>
+                                    <td class="approver-table-td-header" id="headerApprover0-2"></td>
+                                    <td class="approver-table-td-header" id="headerApprover0-3"></td>
+                                    <td class="approver-table-td-header" id="headerApprover0-4"></td>
+                                </tr>
+                                <tr>
+                                    <td class="approver-table-td-sign" id="signApprover0-0"></td>
+                                    <td class="approver-table-td-sign" id="signApprover0-1"></td>
+                                    <td class="approver-table-td-sign" id="signApprover0-2"></td>
+                                    <td class="approver-table-td-sign" id="signApprover0-3"></td>
+                                    <td class="approver-table-td-sign" id="signApprover0-4"></td>
+                                </tr>
+                                <tr>
+                                    <td class="approver-table-td-time" id="timeApprover0-0"></td>
+                                    <td class="approver-table-td-time" id="timeApprover0-1"></td>
+                                    <td class="approver-table-td-time" id="timeApprover0-2"></td>
+                                    <td class="approver-table-td-time" id="timeApprover0-3"></td>
+                                    <td class="approver-table-td-time" id="timeApprover0-4"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+        
+                        <div class="form-row my-2"></div>
+        
+                        <table class="approver-table-custom">
+                            <tbody>
+                                <tr>
+                                    <td class="approver-table-td-header" id="headerApprover2-1"></td>
+                                    <td class="approver-table-td-header" id="headerApprover2-2"></td>
+                                    <td class="approver-table-td-header" id="headerApprover2-3"></td>
+                                    <td class="approver-table-td-header" id="headerApprover2-4"></td>
+                                    <td class="approver-table-td-header" id="headerApprover2-5"></td>
+                                </tr>
+                                <tr>
+                                    <td class="approver-table-td-sign" id="signApproverImg2-1"></td>
+                                    <td class="approver-table-td-sign" id="signApproverImg2-2"></td>
+                                    <td class="approver-table-td-sign" id="signApproverImg2-3"></td>
+                                    <td class="approver-table-td-sign" id="signApproverImg2-4"></td>
+                                    <td class="approver-table-td-sign" id="signApproverImg2-5"></td>
+                                </tr>
+                                <tr>
+                                    <td class="approver-table-td-time" id="checkedTimeApprover2-1"></td>
+                                    <td class="approver-table-td-time" id="checkedTimeApprover2-2"></td>
+                                    <td class="approver-table-td-time" id="checkedTimeApprover2-3"></td>
+                                    <td class="approver-table-td-time" id="checkedTimeApprover2-4"></td>
+                                    <td class="approver-table-td-time" id="checkedTimeApprover2-5"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                </div>
+            </div>
+        
+            <div class="form-group col-6">
+                <div class="card mb-4">
+                    <div class="card-header-sm">
+                        <label class="col-12 col-form-label text-muted text-right"><i class="fas fa-user-check custom-card-header-fas-icon-sm"></i>참조</label>
+                    </div>
+
+                    <div class="card-body" id="bodyReferrer">
+                        <table class="approver-table-custom">
+                            <tbody id="tbodyReferrer">
+                                <tr>
+                                    <td class="approver-table-td-header" id="headerReferrer1-1"></td>
+                                    <td class="approver-table-td-header" id="headerReferrer1-2"></td>
+                                    <td class="approver-table-td-header" id="headerReferrer1-3"></td>
+                                    <td class="approver-table-td-header" id="headerReferrer1-4"></td>
+                                    <td class="approver-table-td-header" id="headerReferrer1-5"></td>
+                                </tr>
+                                <tr>
+                                    <td class="approver-table-td-sign" id="signReferrer1-1"></td>
+                                    <td class="approver-table-td-sign" id="signReferrer1-2"></td>
+                                    <td class="approver-table-td-sign" id="signReferrer1-3"></td>
+                                    <td class="approver-table-td-sign" id="signReferrer1-4"></td>
+                                    <td class="approver-table-td-sign" id="signReferrer1-5"></td>
+                                </tr>
+                                <tr>
+                                    <td class="approver-table-td-time" id="timeReferrer1-1"></td>
+                                    <td class="approver-table-td-time" id="timeReferrer1-2"></td>
+                                    <td class="approver-table-td-time" id="timeReferrer1-3"></td>
+                                    <td class="approver-table-td-time" id="timeReferrer1-4"></td>
+                                    <td class="approver-table-td-time" id="timeReferrer1-5"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+        
+                        <div class="form-row my-2"></div>
+        
+                        <table class="approver-table-custom">
+                            <tbody>
+                                <tr>
+                                    <td class="approver-table-td-header" id="headerReferrer2-1"></td>
+                                    <td class="approver-table-td-header" id="headerReferrer2-2"></td>
+                                    <td class="approver-table-td-header" id="headerReferrer2-3"></td>
+                                    <td class="approver-table-td-header" id="headerReferrer2-4"></td>
+                                    <td class="approver-table-td-header" id="headerReferrer2-5"></td>
+                                </tr>
+                                <tr>
+                                    <td class="approver-table-td-sign" id="signReferrer2-1"></td>
+                                    <td class="approver-table-td-sign" id="signReferrer2-2"></td>
+                                    <td class="approver-table-td-sign" id="signReferrer2-3"></td>
+                                    <td class="approver-table-td-sign" id="signReferrer2-4"></td>
+                                    <td class="approver-table-td-sign" id="signReferrer2-5"></td>
+                                </tr>
+                                <tr>
+                                    <td class="approver-table-td-time" id="checkedTimeReferrer2-1"></td>
+                                    <td class="approver-table-td-time" id="checkedTimeReferrer2-2"></td>
+                                    <td class="approver-table-td-time" id="checkedTimeReferrer2-3"></td>
+                                    <td class="approver-table-td-time" id="checkedTimeReferrer2-4"></td>
+                                    <td class="approver-table-td-time" id="checkedTimeReferrer2-5"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </th:block>
+</html>
+

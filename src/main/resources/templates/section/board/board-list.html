@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <!-- 이 템플릿을 사용할 때 /js/board/board-list.js를 추가할 것. -->
+    <th:block th:fragment="board-list-section">
+        <div class="card">
+            <div class="card-header card-header-custom">
+                <label class="col-form-label col-form-label-card-header-lg" id="boardListTitle"><i id="boardListIcon"></i></label>
+                
+                <div class="float-right">
+                    <div class="row">
+                        <button class="btn btn-outline-info mr-2" type="button" onclick="setDateAgo('day')"><i class="fas fa-chevron-left mr-2"></i>1일 전</button>
+                        <button class="btn btn-outline-info mr-2" type="button" onclick="setDateAgo('month')"><i class="fas fa-chevron-left mr-2"></i>1달 전</button>
+                        <button class="btn btn-outline-info mr-2" type="button" onclick="setDateAgo('year')"><i class="fas fa-chevron-left mr-2"></i>1년 전</button>
+
+                        <div class="input-group mr-2" style="width: 12rem;" data-target-input="nearest">
+                            <div class="input-group-prepend" data-target="#searchDateStart" data-toggle="datetimepicker">
+                                <div class="input-group-text"><i class="fas fa-calendar-day"></i></div>
+                            </div>
+                            <input type="text" class="form-control text-center datetimepicker-input" id="searchDateStart" data-toggle="datetimepicker" data-target="#searchDateStart" autocomplete="off" onchange="checkSearchDateStart()">
+                        </div>
+
+                        <div class="input-group mr-2" style="width: 12rem;" data-target-input="nearest">
+                            <div class="input-group-prepend" data-target="#searchDateEnd" data-toggle="datetimepicker">
+                                <div class="input-group-text"><i class="fas fa-calendar-day"></i></div>
+                            </div>
+                            <input type="text" class="form-control text-center datetimepicker-input" id="searchDateEnd" data-toggle="datetimepicker" data-target="#searchDateEnd" autocomplete="off" onchange="checkSearchDateEnd()">
+                        </div>
+                        
+                        <button class="btn btn-outline-primary mr-2" type="button" id="search"><i class="fas fa-search mr-2"></i>검색</button>
+                        <a class="btn btn-outline-success" href="writepage" role="button"><i class="fas fa-edit mr-2"></i>작성</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <table class="table table-hover" id="boardListTable">
+                    <thead>
+                        <tr class="text-center">
+                            <th>No.</th>
+                            <th>제목</th>
+                            <th>작성자</th>
+                            <th>작성일</th>
+                        </tr>
+                    </thead>
+                    <tbody id="boardListTbody"></tbody>
+                </table>
+            </div>
+        </div>
+    </th:block>
+</html>

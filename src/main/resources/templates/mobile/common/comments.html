@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <!-- 이 템플릿을 사용할 때 /js/common/comments.js를 추가할 것. -->
+    <th:block th:fragment="comment-section">
+        <div class="card">
+            <div class="card-header card-header-custom">
+                <div class="row">
+                    <label class="col-form-label col-form-label-sm text-muted ml-2"><i class="fas fa-comments custom-card-header-fas-icon-sm"></i>Comments</label>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <table class="table table-borderless table-sm">
+                        <tbody id="commentList" style="font-size: 0.8rem;"></tbody>
+                    </table>
+                </div>
+
+                <div class="row">
+                    <div class="input-group">
+                        <textarea class="form-control form-control-sm" rows="2" id="comment"></textarea>
+                        <div class="input-group-append">
+                          <button class="btn btn-outline-info" type="button" onclick="insertComment()"><i class="fas fa-comment mr-2"></i>등록</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </th:block>
+</html>

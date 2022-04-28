@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <!-- 이 템플릿을 사용할 때 /js/board/board-view.js를 추가할 것. -->
+    <th:block th:fragment="board-view-header-section">
+        <div class="card-header card-header-custom">
+            <div class="row justify-content-between">
+                <label class="col-form-label col-form-label-sm text-muted" th:text="|[ ${docs.id} ]|" id="boardType"></label>
+                <label class="col-form-label col-form-label-sm text-muted" th:text="|${#strings.substring(#strings.replace(docs.createdDate, '-', '.'), 2, 10)}. ${docs.createdTime}|"></label>
+            </div>
+            <span class="d-none" th:text="${docs.id}" id="docsId"></span>
+        </div>
+    </th:block>
+</html>

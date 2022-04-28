@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset='utf-8'>
+        <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+        <title>Member List</title>
+
+        <link rel="stylesheet" th:href="@{/css/styles.css}">
+
+        <link href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+    </head>
+    <body class="body-inner-frame">
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-header card-header-custom">
+                    <div class="float-left">
+                        <label class="col-form-label col-form-label-card-header-lg"><i class="fas fa-users-cog custom-card-header-fas-icon"></i>사용자 관리</label>
+                    </div>
+
+                    <div class="float-right">
+                        <div class="row">
+                            <form class="form-inline">
+                                <select class="form-control mr-2" id="isRetired" onchange="getUserList()">
+                                    <option value="0">재직</option>
+                                    <option value="1">퇴직</option>
+                                </select>
+                                <button class="btn btn-outline-primary mr-2" type="button" onclick="getUserList()"><i class="fas fa-search mr-2"></i>검색</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <div class="form-row">
+                        <div class="form-group col-1 d-none">
+                            <label for="idx">Idx</label>
+                            <input type="text" class="form-control text-center" id="idx" autocomplete="off" readonly>
+                        </div>
+                        <div class="form-group col-1">
+                            <label for="userId">ID</label>
+                            <input type="text" class="form-control text-center" id="userId" autocomplete="off" readonly>
+                        </div>
+                        <div class="form-group col-1">
+                            <label for="userPw">PW</label>
+                            <input type="password" class="form-control text-center" id="userPw">
+                        </div>
+                        <div class="form-group col-2">
+                            <label for="team">부서</label>
+                            <input type="text" class="form-control text-center" autocomplete="off" id="team">
+                        </div>
+                        <div class="form-group col-2">
+                            <label for="jobTitle">직위</label>
+                            <select class="form-control" id="jobTitle">
+                                <option value="" disabled selected>선택</option>
+                                <option th:each="item : ${jobTitle}" th:value="${item.code}" th:text="${item.value}"></option>
+                            </select>
+                        </div>
+                        <div class="form-group col-1">
+                            <label for="name">이름</label>
+                            <input type="text" class="form-control text-center" autocomplete="off" id="name">
+                        </div>
+                        <div class="form-group col-1">
+                            <label for="retired">근무 상태</label>
+                            <select class="form-control" id="retired">
+                                <option value="0">재직</option>
+                                <option value="1">퇴직</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-1">
+                            <label for="role">권한</label>
+                            <select class="form-control" id="role">
+                                <option value="" disabled selected>선택</option>
+                                <option th:each="item : ${role}" th:value="${item}" th:text="${item}"></option>
+                            </select>
+                        </div>
+                        <div class="form-group col-1">
+                            <label for="enabled">사용</label>
+                            <select class="form-control" id="enabled">
+                                <option value="1">True</option>
+                                <option value="0">False</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-1">
+                            <label>&nbsp;</label>
+                            <button type="button" class="btn btn-outline-info btn-block" onclick="clearForm()"><i class="fas fa-user-plus mr-2"></i>신규</button>
+                        </div>
+                        <div class="form-group col-1">
+                            <label>&nbsp;</label>
+                            <button type="button" class="btn btn-outline-success btn-block" onclick="saveMember()"><i class="fas fa-user-edit mr-2"></i>저장</button>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-row">
+                        <div class="col-12">
+                            <table class="table table-hover" id="tableUserList">
+                                <thead>
+                                    <tr class="text-center">
+                                        <th>Idx</th>
+                                        <th>ID</th>
+                                        <th>부서</th>
+                                        <th>직위</th>
+                                        <th>이름</th>
+                                        <th>권한</th>
+                                        <th>사용</th>
+                                        <th class="d-none"></th>
+                                        <th><i class="fas fa-check"></i></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="userList"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.slim.min.js" integrity="sha512-6ORWJX/LrnSjBzwefdNUyLCMTIsGoNP6NftMy2UAm1JBm6PRZCO1d7OHBStWpVFZLO+RerTvqX/Z9mBFfCJZ4A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js" integrity="sha512-Tn2m0TIpgVyTzzvmxLNuqbSJH3JP8jm+Cy3hvHrW7ndTDcJ1w5mBiksqDBb8GpE2ksktFvDB/ykZ0mDpsZj20w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.0/js/bootstrap.bundle.min.js" integrity="sha512-wV7Yj1alIZDqZFCUQJy85VN+qvEIly93fIQAN7iqDFCPEucLCeNFz4r35FCo9s6WrpdDQPi80xbljXB8Bjtvcg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        
+        <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script>
+
+        <script th:src="@{/js/common/fetch-custom.js}"></script>
+        <script th:src="@{/js/admin/member-list.js}" sec:authorize="hasAnyAuthority('ADMIN')"></script>
+    </body>
+</html>

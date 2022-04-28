@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <!-- 이 템플릿을 사용할 때 /js/mobile/common/search-list.js를 추가할 것. -->
+    <th:block th:fragment="search-list-section">
+        <div class="card mt-4">
+            <div class="card-header card-header-custom">
+                <label class="col-form-label col-form-label-card-header font-weight-bold" id="title">
+                    <i class="custom-card-header-fas-icon-sm" id="titleIcon"></i>
+                </label>
+        
+                <div class="float-right">
+                    <div class="row">
+                        <div class="input-group input-group-sm mr-2" style="width: 8rem;" data-target-input="nearest">
+                            <div class="input-group-prepend" data-target="#dateFrom" data-toggle="datetimepicker">
+                                <div class="input-group-text"><i class="fas fa-calendar-day"></i></div>
+                            </div>
+                            <input type="text" class="form-control text-center datetimepicker-input" id="dateFrom" data-toggle="datetimepicker" data-target="#dateFrom" autocomplete="off">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <table class="table table-hover">
+                    <tbody id="tbodyList"></tbody>
+                </table>
+            </div>
+        </div>    
+    </th:block>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <th:block th:fragment="attachments-list-section">
+        <div class="row justify-content-end" th:classappend="${fileList} == null ? d-none">
+            <div class="col-6">
+                <div class="float-right">
+                    <label class="col-form-label col-form-label-sm text-muted text-right"><i class="fas fa-download text-info mr-2"></i>Attachments</label>
+                    <div class="list-group">
+                        <a th:each="file : ${fileList}" th:href="|/attachments/${file.docsId}/${file.seq}/${file.conversionName}|" th:text="${file.originalName}" class="list-group-item list-group-item-action" download></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </th:block>
+</html>

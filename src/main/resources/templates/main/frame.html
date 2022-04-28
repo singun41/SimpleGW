@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <title>Simple GW</title>
+        
+        <link rel="stylesheet" th:href="@{/css/styles.css}">
+    </head>
+    <body class="sb-nav-fixed">
+        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+            <!-- Navbar Brand-->
+            <a class="navbar-brand font-weight-bold text-info" href="">Simple Groupware</a>
+            
+            <!-- Sidebar Toggle-->
+            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href=""><i class="fas fa-bars"></i></button>
+            
+            <div class="ml-auto mr-2">
+                <label class="col-form-label col-form-label-sm custom-text-whitesmoke" th:text="|${myInfo.team} ${myInfo.jobTitle} ${myInfo.name}|"></label>
+            </div>
+
+            <!-- Navbar-->
+            <ul class="navbar-nav mr-auto mr-md-2">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                        <a class="dropdown-item text-secondary" href="#"><i class="fas fa-tag mr-2"></i><span sec:authentication="principal.authorities"></span></a>
+                        <div class="dropdown-divider"></div>
+						<a class="dropdown-item text-secondary" href="#" role="button" data-toggle="modal" data-target="#myinfoForm"><i class="fas fa-user-cog mr-2"></i>내 정보</a>
+						<a class="dropdown-item text-secondary" href="#" role="button" data-toggle="modal" data-target="#mypwForm"><i class="fas fa-user-lock mr-2"></i>비밀번호 변경</a>
+                        <a class="dropdown-item text-secondary" href="#" role="button"><i class="fas fa-cog mr-2"></i>환경설정</a>
+                        
+                        <div sec:authorize="hasAnyAuthority('ADMIN')">
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item text-secondary" href="#" role="button" onclick="getPage('admin/member/listpage')"><i class="fas fa-users-cog mr-2"></i>사용자 관리</a>
+                            <a class="dropdown-item text-secondary" href="#" role="button" onclick="getPage('admin/code/config')"><i class="fas fa-cogs mr-2"></i>코드 관리</a>
+                        </div>
+
+						<div class="dropdown-divider"></div>
+                        <a class="dropdown-item text-secondary" href="logout"><i class="fas fa-sign-out-alt mr-2"></i>로그아웃</a>
+					</div>
+                </li>
+            </ul>
+        </nav>
+
+        <div id="layoutSidenav">
+            <div id="layoutSidenav_nav">
+                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavMaster">
+                    <div class="sb-sidenav-menu">
+                        <div class="nav">
+                            <a class="nav-link active" href="#main" onclick="getPage('main')">
+                                <div class="sb-nav-link-icon"><i class="fas fa-object-group"></i></div>Main
+                            </a>
+
+                            <a class="nav-link" href="#notice/listpage" onclick="getPage('notice/listpage')">
+                                <div class="sb-nav-link-icon"><i class="fas fa-clipboard-list"></i></div>공지사항
+                            </a>
+
+                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#workPages" aria-expanded="false" aria-controls="workPages">
+                                <div class="sb-nav-link-icon"><i class="fas fa-user-edit"></i></div>업무
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="workPages" aria-labelledby="headingOne" data-parent="#sidenavMaster">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="#daily-work-record-listpage" onclick="getPage('daily-work-record-listpage')" sec:authorize="hasAnyAuthority('LEADER', 'DIRECTOR', 'MASTER', 'ADMIN')">
+                                        <div class="sb-nav-link-icon"><i class="fas fa-list-ol"></i></div>업무일지 리스트
+                                    </a>
+                                    <a class="nav-link" href="#daily-work-record" onclick="getPage('daily-work-record')">
+                                        <div class="sb-nav-link-icon"><i class="fas fa-list-ol"></i></div>업무일지
+                                    </a>
+                                    <a class="nav-link" href="#meeting/listpage" onclick="getPage('meeting/listpage')">
+                                        <div class="sb-nav-link-icon"><i class="fas fa-paste"></i></div>회의록
+                                    </a>
+                                </nav>
+                            </div>
+
+                            <a class="nav-link collapsed" href="" data-toggle="collapse" data-target="#reportPages" aria-expanded="false" aria-controls="reportPages">
+                                <div class="sb-nav-link-icon"><i class="fas fa-file-signature"></i></div>전자결재
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="reportPages" aria-labelledby="headingTwo" data-parent="#sidenavMaster">
+                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavReportPages">
+                                    <a class="nav-link" href="#approval/received/listpage" onclick="getPage('approval/received/listpage')">
+                                        <div class="sb-nav-link-icon"><i class="fas fa-file-import"></i></div>수신문서
+                                    </a>
+
+                                    <a class="nav-link collapsed" href="" data-toggle="collapse" data-target="#reportList" aria-expanded="false" aria-controls="reportList">
+                                        <div class="sb-nav-link-icon"><i class="far fa-copy"></i></div>문서
+                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                    </a>
+                                    <div class="collapse" id="reportList" aria-labelledby="headingOne" data-parent="#sidenavReportPages">
+                                        <nav class="sb-sidenav-menu-nested nav">
+                                            <a class="nav-link" href="#approval/default-report/listpage" onclick="getPage('approval/default-report/listpage')">기안서</a>
+                                            <a class="nav-link" href="#approval/incident-report/listpage" onclick="getPage('approval/incident-report/listpage')">사고 보고서</a>
+                                        </nav>
+                                    </div>
+
+                                    <a class="nav-link collapsed" href="" data-toggle="collapse" data-target="#attendanceList" aria-expanded="false" aria-controls="attendanceList">
+                                        <div class="sb-nav-link-icon"><i class="fas fa-user-check"></i></div>근태
+                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                    </a>
+                                    <div class="collapse" id="attendanceList" aria-labelledby="headingOne" data-parent="#sidenavReportPages">
+                                        <nav class="sb-sidenav-menu-nested nav">
+                                            <a class="nav-link" href="#approval/dayoff/listpage" onclick="getPage('approval/dayoff/listpage')">휴가 신청서</a>
+                                            <a class="nav-link" href="#approval/overtime/listpage" onclick="getPage('approval/overtime/listpage')">연장 근무 신청서</a>
+                                        </nav>
+                                    </div>
+                                </nav>
+                            </div>
+
+                            <a class="nav-link collapsed" href="" data-toggle="collapse" data-target="#requestForms" aria-expanded="false" aria-controls="requestForms">
+                                <div class="sb-nav-link-icon"><i class="fas fa-copy"></i></div>신청서
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="requestForms" aria-labelledby="headingTwo" data-parent="#sidenavMaster">
+                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavRequestForms">
+                                    <a class="nav-link" href="#approval/purchase/listpage" onclick="getPage('approval/purchase/listpage')">
+                                        <div class="sb-nav-link-icon"><i class="fas fa-boxes"></i></div>물품 구매
+                                    </a>
+                                    <a class="nav-link" href="#approval/namecard/listpage" onclick="getPage('approval/namecard/listpage')">
+                                        <div class="sb-nav-link-icon"><i class="far fa-id-card"></i></div>명함
+                                    </a>
+                                </nav>
+                            </div>
+
+                            <a class="nav-link" href="#schedule" onclick="getPage('schedule')">
+                                <div class="sb-nav-link-icon"><i class="far fa-calendar-alt"></i></div>일정 및 예약
+                            </a>
+
+                            <a class="nav-link" href="#freeboard/listpage" onclick="getPage('freeboard/listpage')">
+                                <div class="sb-nav-link-icon"><i class="fas fa-comment-alt"></i></div>자유게시판
+                            </a>
+
+                            <a class="nav-link" href="#archive/listpage" onclick="getPage('archive/listpage')">
+                                <div class="sb-nav-link-icon"><i class="fas fa-file-archive"></i></div>자료실
+                            </a>
+
+                            <a class="nav-link" href="#members/listpage" onclick="getPage('members/listpage')">
+                                <div class="sb-nav-link-icon"><i class="fas fa-user-friends"></i></div>임직원 현황
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="sb-sidenav-footer">
+                        <div id="frameNavDatetime"></div>
+                    </div>
+                </nav>
+            </div>
+            <div id="layoutSidenav_content">
+                <main>
+                    <iframe id="mainViewFrame" th:src="@{/main}" style="display: block; border: none; width: 100%; height: 92vh"></iframe>
+                    <th:block th:replace="main/modal-info :: myinfo"></th:block>
+                    <th:block th:replace="main/modal-pw :: mypw"></th:block>
+                </main>
+            </div>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.slim.min.js" integrity="sha512-6ORWJX/LrnSjBzwefdNUyLCMTIsGoNP6NftMy2UAm1JBm6PRZCO1d7OHBStWpVFZLO+RerTvqX/Z9mBFfCJZ4A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js" integrity="sha512-Tn2m0TIpgVyTzzvmxLNuqbSJH3JP8jm+Cy3hvHrW7ndTDcJ1w5mBiksqDBb8GpE2ksktFvDB/ykZ0mDpsZj20w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.0/js/bootstrap.bundle.min.js" integrity="sha512-wV7Yj1alIZDqZFCUQJy85VN+qvEIly93fIQAN7iqDFCPEucLCeNFz4r35FCo9s6WrpdDQPi80xbljXB8Bjtvcg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script th:src="@{/js/common/set-moment-locale-ko.js}"></script>
+
+        <script th:src="@{/js/common/set-datetimepicker-default.js}"></script>
+        <script th:src="@{/js/main/frame.js}"></script>
+        <script th:src="@{/js/common/fetch-custom.js}"></script>
+    </body>
+</html>

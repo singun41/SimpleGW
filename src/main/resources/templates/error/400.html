@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        
+        <title>403</title>
+        
+        <link th:href="@{/css/styles.css}" rel="stylesheet" />
+
+        <style>
+            .main-row {
+                height: 70vh;
+            }
+        </style>
+    </head>
+    <body class="bg-dark">
+        <div class="container">
+            <div class="row main-row d-flex justify-content-center align-items-center">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="text-center">CODE 400</h3>
+                        </div>
+                        <div class="card-body">
+                            <h4 class="text-center">Bad request.</h4>
+                            <br>
+                            <h5 class="text-center">잘못된 요청입니다.</h5>
+                        </div>
+                        <div class="card-footer">
+                            <div class="row justify-content-center">
+                                <a th:href="@{/main}" role="button" class="btn btn-outline-secondary">메인 페이지로 이동</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

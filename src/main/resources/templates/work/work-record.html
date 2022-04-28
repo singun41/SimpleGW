@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+        <title>Daily work record</title>
+
+        <link th:href="@{/css/styles.css}" rel="stylesheet">
+        
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/css/tempusdominus-bootstrap-4.min.css" integrity="sha512-3JRrEUwaCkFUBLK1N8HehwQgu8e23jTH4np5NHOmQOobuC4ROQxFwFgBLTnhcnQRMs84muMh0PnnwXlPq5MGjg==" crossorigin="anonymous" referrerpolicy="no-referrer" rel="stylesheet">
+    </head>
+    <body class="mt-4">
+        <div class="container-fluid">
+
+            <div class="card mb-4">
+                <div class="card-header card-header-custom">
+                    <div class="float-left">
+                        <label class="col-form-label col-form-label-card-header-lg">
+                            <i class="fas fa-list-ol custom-card-header-fas-icon-sm"></i>업무일지
+                        </label>
+                    </div>
+                    <div class="float-right">
+                        <div class="row">
+                            <button class="btn btn-outline-info mr-2" type="button" onclick="setDateAgo('day')"><i class="fas fa-chevron-left mr-2"></i>1일 전</button>
+                            <button class="btn btn-outline-info mr-2" type="button" onclick="setDateAgo('today')"><i class="fas fa-calendar-day mr-2"></i>오늘</button>
+    
+                            <div class="input-group mr-2" style="width: 12rem;" data-target-input="nearest">
+                                <div class="input-group-prepend" data-target="#searchDate" data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="fas fa-calendar-day"></i></div>
+                                </div>
+                                <input type="text" class="form-control text-center datetimepicker-input" id="searchDate" data-toggle="datetimepicker" data-target="#searchDate" autocomplete="off" onchange="changeWorkRecord()">
+                            </div>
+
+                            <button class="btn btn-outline-success" type="button" onclick="saveWorkRecord()"><i class="fas fa-file-upload mr-2"></i>등록</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <table class="table table-borderless">
+                        <thead>
+                            <tr class="text-center">
+                                <th class="d-none"></th>
+                                <th style="width: 14%;">날짜</th>
+                                <th style="width: 43%;">업무 처리 내용</th>
+                                <th style="width: 43%;">다음 업무 계획</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th class="d-none"></th>
+                                <td class="align-middle text-center" id="dayBefore"></td>
+                                <td><textarea class="form-control" rows="12" id="beforeWork" readonly></textarea></td>
+                                <td><textarea class="form-control" rows="12" id="beforePlan" readonly></textarea></td>
+                            </tr>
+                            <tr>
+                                <th class="d-none" id="id"></th>
+                                <td class="align-middle text-center" id="today"></td>
+                                <td><textarea class="form-control" rows="12" id="work"></textarea></td>
+                                <td><textarea class="form-control" rows="12" id="plan"></textarea></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.slim.min.js" integrity="sha512-6ORWJX/LrnSjBzwefdNUyLCMTIsGoNP6NftMy2UAm1JBm6PRZCO1d7OHBStWpVFZLO+RerTvqX/Z9mBFfCJZ4A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js" integrity="sha512-Tn2m0TIpgVyTzzvmxLNuqbSJH3JP8jm+Cy3hvHrW7ndTDcJ1w5mBiksqDBb8GpE2ksktFvDB/ykZ0mDpsZj20w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.0/js/bootstrap.bundle.min.js" integrity="sha512-wV7Yj1alIZDqZFCUQJy85VN+qvEIly93fIQAN7iqDFCPEucLCeNFz4r35FCo9s6WrpdDQPi80xbljXB8Bjtvcg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script th:src="@{/js/common/set-moment-locale-ko.js}"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/js/tempusdominus-bootstrap-4.min.js" integrity="sha512-k6/Bkb8Fxf/c1Tkyl39yJwcOZ1P4cRrJu77p83zJjN2Z55prbFHxPs9vN7q3l3+tSMGPDdoH51AEU8Vgo1cgAA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+        <script th:src="@{/js/common/fetch-custom.js}"></script>
+        <script th:src="@{/js/common/set-datetimepicker-default.js}"></script>
+        <script th:src="@{/js/work/work-record.js}"></script>
+    </body>
+</html>

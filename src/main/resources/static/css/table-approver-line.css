@@ -1,0 +1,34 @@
+/* 결재, 참조 라인표 디자인 */
+.approver-table-custom {
+    border: 1px solid lightgray;
+    width: 100%;
+}
+
+.approver-table-td-header {
+    text-align: center;
+    background-color: whitesmoke;
+    height: 1.2rem;
+    font-size: 0.8rem;
+    -webkit-print-color-adjust: exact;
+}
+
+.approver-table-custom td {
+    border: 1px solid lightgray;
+    width: 20%;
+}
+
+.approver-table-td-sign {
+    text-align: center;
+    height: 3rem;
+}
+
+.approver-table-td-sign img {
+    width: 50%;
+    height: 80%;
+}
+
+.approver-table-td-time {
+    text-align: center;
+    height: 1.2rem;
+    font-size: 0.7rem;
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <th:block th:fragment="sseAlert">
+        <div class="modal fade" id="alertModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <label class="col-form-label col-form-label-card-header-lg text-info"><i class="fas fa-bell mr-2"></i>알림</label>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="form-row">
+                            <label class="col-12 col-form-label text-center" id="alertTitle"></label>
+                        </div>
+                        
+                        <br>
+
+                        <div class="form-row">
+                            <label class="col-12 col-form-label" id="alertContent"></label>
+                        </div>
+
+                        <div class="form-row">
+                            <label class="col-6 col-form-label" id="alertResultTitle"></label>
+                            <label class="col-6 col-form-label" id="alertResult"></label>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-success" data-dismiss="modal" onclick="clearAlertContent()"><i class="fas fa-check mr-2"></i>확인</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </th:block>
+</html>

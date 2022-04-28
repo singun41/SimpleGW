@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <th:block th:fragment="alarmMsg">
+        <div class="modal fade" id="alarmModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <label class="col-form-label col-form-label-card-header-lg text-info"><i class="fas fa-bell mr-2"></i>알림</label>
+                    </div>
+
+                    <div class="modal-body">
+                        <table class="table table-hover table-borderless">
+                            <tbody id="alarmContent"></tbody>
+                        </table>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-success" data-dismiss="modal" onclick="clearAlertContent()"><i class="fas fa-check mr-2"></i>확인</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </th:block>
+</html>

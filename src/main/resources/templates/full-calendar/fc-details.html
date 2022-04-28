@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset='utf-8'>
+        <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+        <title>Schedule Details</title>
+
+        <link rel="stylesheet" th:href="@{/css/styles.css}">
+
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/css/tempusdominus-bootstrap-4.min.css" integrity="sha512-3JRrEUwaCkFUBLK1N8HehwQgu8e23jTH4np5NHOmQOobuC4ROQxFwFgBLTnhcnQRMs84muMh0PnnwXlPq5MGjg==" crossorigin="anonymous" referrerpolicy="no-referrer" rel="stylesheet">
+    </head>
+    <body style="height: 90%; margin-top: 1.5rem;">
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-header card-header-custom">
+                    <div class="row justify-content-between">
+                        <label class="col-6 col-form-label col-form-label-sm text-muted"><i class="fas fa-edit custom-card-header-fas-icon-sm"></i>일정 및 예약<span class="ml-2" th:text="|[ ${data.id} ]|"></span></label>
+                        <label class="col-6 col-form-label col-form-label-sm text-primary text-right" id="typeTitle"></label>
+                        <span id="scheduleId" class="d-none" th:text="${data.id}"></span>
+                        <span id="type" class="d-none" th:text="${type}"></span>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <div class="form-row">
+                        <label class="col-6 col-form-label col-form-label-sm text-muted" th:text="|등록일: ${ #strings.replace( #strings.replace(data.createdDatetime, '-', '. '), 'T', '. ')}|"></label>
+                        <label class="col-6 col-form-label col-form-label-sm text-muted text-right" th:text="|${data.team} ${data.jobTitle} ${data.name}|"></label>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-4">
+                            <select class="form-control" id="codeSelector" th:disabled="${updatable} == false">
+                                <option value="" disabled>선택하세요.</option>
+                                <option th:each="cd : ${codeList}" th:value="${cd.code}" th:text="${cd.value}" th:selected="${data.code.equals(cd.code)}"></option>
+                            </select>
+                        </div>
+                        <div class="form-group col-4">
+                            <div class="input-group mr-2" data-target-input="nearest">
+                                <div class="input-group-prepend" data-target="#dateStart" data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="fas fa-calendar-day"></i></div>
+                                </div>
+                                <input type="text" class="form-control text-center datetimepicker-input" id="dateStart" th:value="${data.datetimeStart}" data-toggle="datetimepicker" data-target="#dateStart" autocomplete="off" onchange="checkDateStart()" th:disabled="${updatable} == false">
+                            </div>
+                        </div>
+                        <div class="form-group col-4">
+                            <div class="input-group mr-2" data-target-input="nearest">
+                                <div class="input-group-prepend" data-target="#dateEnd" data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="fas fa-calendar-day"></i></div>
+                                </div>
+                                <input type="text" class="form-control text-center datetimepicker-input" id="dateEnd" th:value="${data.datetimeEnd}" data-toggle="datetimepicker" data-target="#dateEnd" autocomplete="off" onchange="checkDateEnd()" th:disabled="${updatable} == false">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-12">
+                            <input type="text" class="form-control" id="title" th:value="${data.title}" placeholder="제목을 작성하세요." autocomplete="off" th:readonly="${updatable} == false">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-12">
+                            <textarea class="form-control" rows="5" id="content" th:text="${data.content}" placeholder="내용을 작성하세요." th:readonly="${updatable} == false"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-12">
+                            <div class="float-right">
+                                <button class="btn btn-outline-secondary" type="button" onclick="self.close()"><i class="fas fa-window-close mr-2"></i>닫기</button>
+
+                                <span th:if="${updatable} == true">
+                                    <button class="btn btn-outline-success ml-1" type="button" onclick="saveSchedule()"><i class="fas fa-calendar-check mr-2"></i>수정</button>
+                                    <button class="btn btn-outline-danger ml-1" type="button" onclick="deleteSchedule()"><i class="fas fa-trash-alt mr-2"></i>삭제</button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.slim.min.js" integrity="sha512-6ORWJX/LrnSjBzwefdNUyLCMTIsGoNP6NftMy2UAm1JBm6PRZCO1d7OHBStWpVFZLO+RerTvqX/Z9mBFfCJZ4A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js" integrity="sha512-Tn2m0TIpgVyTzzvmxLNuqbSJH3JP8jm+Cy3hvHrW7ndTDcJ1w5mBiksqDBb8GpE2ksktFvDB/ykZ0mDpsZj20w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.0/js/bootstrap.bundle.min.js" integrity="sha512-wV7Yj1alIZDqZFCUQJy85VN+qvEIly93fIQAN7iqDFCPEucLCeNFz4r35FCo9s6WrpdDQPi80xbljXB8Bjtvcg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script th:src="@{/js/common/set-moment-locale-ko.js}"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/js/tempusdominus-bootstrap-4.min.js" integrity="sha512-k6/Bkb8Fxf/c1Tkyl39yJwcOZ1P4cRrJu77p83zJjN2Z55prbFHxPs9vN7q3l3+tSMGPDdoH51AEU8Vgo1cgAA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+        <script th:src="@{/js/common/set-datetimepicker-default.js}"></script>
+
+        <script th:src="@{/js/common/fetch-custom.js}"></script>
+        <script th:src="@{/js/full-calendar/fc-common.js}"></script>
+        <script th:src="@{/js/full-calendar/fc-details.js}"></script>
+    </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <!-- 이 템플릿을 사용할 때 /js/approval/approval-received-list.js를 추가할 것. -->
+    <th:block th:fragment="approval-received-list-current-section">
+        <div class="card">
+            <div class="card-header card-header-custom">
+                <div class="float-left">
+                    <label class="col-form-label col-form-label-card-header-lg" id="boardApprovalListTitle"><i id="boardApprovalListIcon"></i></label>
+                </div>
+                
+                <div class="float-right">
+                    <div class="row">
+                        <button class="btn btn-outline-primary mr-2" type="button" onclick="searchReceivedApprovalDocs()"><i class="fas fa-search mr-2"></i>검색</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <table class="table table-hover" id="tableApprovalList">
+                    <thead>
+                        <tr class="text-center">
+                            <th>No.</th>
+                            <th>구분</th>
+                            <th>작성자</th>
+                            <th>제목</th>
+                            <th>상태</th>
+                            <th>결재자</th>
+                            <th>작성일</th>
+                        </tr>
+                    </thead>
+                    <tbody id="approvalList"></tbody>
+                </table>
+            </div>
+        </div>
+    </th:block>
+</html>
