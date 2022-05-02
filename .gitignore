@@ -32,3 +32,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### project js libraries ###
+/src/main/resources/static/js/common/libraries/
