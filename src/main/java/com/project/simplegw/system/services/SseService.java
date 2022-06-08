@@ -19,7 +19,7 @@ public class SseService {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     private final Map<Long, SseEmitter> sseStorage = new ConcurrentHashMap<>();
     // private static final Long EMITTER_TIME_OUT = 1000L * 5;   // 5 seconds test
-    private static final Long EMITTER_TIME_OUT = 1000L * 60 * 60 * 2;   // 2 hours
+    private static final Long EMITTER_TIME_OUT = 1000L * 60 * 15;   // 15 minutes
 
     public SseService() {
         logger.info("Server Sent Event 서비스를 시작합니다.");
