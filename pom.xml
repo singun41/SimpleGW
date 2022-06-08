@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.project</groupId>
 	<artifactId>simplegw</artifactId>
-	<version>22.05.02</version>
+	<version>22.06.08</version>
 	<name>simplegw</name>
 	<description>Simple Groupware project for Spring Boot</description>
 	<properties>
