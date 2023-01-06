@@ -1,0 +1,14 @@
+.table.dataTable thead tr {
+    background-color: rgba(248, 249, 250, 1);
+}
+.table.dataTable tr th {
+    text-align: center !important;
+    vertical-align: middle !important;
+    color: rgba(108, 117, 125, 1);
+    font-weight: normal;
+}
+.table.dataTable tr td {
+    text-align: center;
+    vertical-align: middle;
+    padding: 0.85rem 0.25rem;
+}

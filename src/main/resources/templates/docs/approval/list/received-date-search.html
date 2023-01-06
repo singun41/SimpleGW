@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <th:block th:fragment="received-date-search">
+        <!--
+            아래 스크립트를 포함시켜야 함.
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/themes/dark.min.css">
+
+            <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.2/dayjs.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.2/locale/ko.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/l10n/ko.min.js"></script>
+
+            <script defer th:src="@{/js/docs/approval/list/recieved-search.js}"></script>
+        -->
+        <div class="card-header-icon"><i class="fa-solid fa-file-lines"></i></div><span class="text-secondary align-middle" th:text="${pageTitle}"></span>
+        <span class="float-end">
+            <div class="align-middle d-inline-block me-2">
+                <select class="form-select form-select-sm" id="role">
+                    <option th:each="role : ${roles}" th:value="${role.name().toLowerCase()}" th:text="${role.title}"></option>
+                </select>
+            </div>
+            <div class="align-middle d-inline-block me-2">
+                <select class="form-select form-select-sm" id="type">
+                    <option th:each="type : ${types}" th:value="${type.name().toLowerCase()}" th:text="${type.title}"></option>
+                </select>
+            </div>
+
+            <div class="dtpicker-search-long me-2">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-text"><i class="fa-solid fa-calendar-day"></i></span>
+                    <input type="text" class="form-control text-center input-date" id="searchDtp" autocomplete="off">
+                </div>
+            </div>
+
+            <button type="button" class="btn btn-outline-primary btn-sm btn-icon" onclick="search()"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </span>
+    </th:block>
+</html>

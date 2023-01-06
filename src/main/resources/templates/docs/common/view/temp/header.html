@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <th:block th:fragment="header">
+        <span class="d-none" id="docsId" th:text="${docs.id}"></span>
+        <span class="d-none" id="docsType" th:text="${#strings.toLowerCase(docs.type)}"></span>
+
+        <div class="card-header-icon"><i class="fa-solid fa-file-lines"></i></div><span class="card-header-text" th:text="|${docs.type.title} [ ${docs.id} ]|"></span><span class="card-header-text text-danger"> - 임시저장 문서</span>
+        <span class="float-end">
+            <span class="card-header-text me-2" th:text="|${#temporals.format(docs.createdDate, 'YY. MM. dd.')} ${#temporals.format(docs.createdTime, 'HH:mm')}|"></span>
+        </span>
+    </th:block>
+</html>

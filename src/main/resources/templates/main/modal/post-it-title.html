@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <th:block th:fragment="post-it-title">
+        <div class="modal fade" id="postitTitle" data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <i class="fa-solid fa-note-sticky color-bs4-info me-2"></i><span class="fs-6 modal-title text-secondary">포스트잇 제목 설정</span>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">1</span>
+                            <input type="text" class="form-control input-post-it-title" placeholder="Memo 1">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">2</span>
+                            <input type="text" class="form-control input-post-it-title" placeholder="Memo 2">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">3</span>
+                            <input type="text" class="form-control input-post-it-title" placeholder="Memo 3">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">4</span>
+                            <input type="text" class="form-control input-post-it-title" placeholder="Memo 4">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-text">5</span>
+                            <input type="text" class="form-control input-post-it-title" placeholder="Memo 5">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-success btn-sm btn-icon" onclick="updateTitle()"><i class="fa-solid fa-check"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </th:block>
+</html>

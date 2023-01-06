@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <th:block th:fragment="count">
+        <!--
+            아래 스크립트를 포함시켜야 함.
+            <script defer th:src="@{/js/docs/approval/dayoff/count.js}"></script>
+        -->
+        <div class="card shadow bg-body rounded-3 mb-5">
+            <div class="card-header">
+                <div class="card-header-icon"><i class="fa-solid fa-circle-check"></i></div><span class="card-header-text">연차 카운트</span>
+            </div>
+            <div class="card-body">
+                <span class="custom-fs-9 text-secondary">지급:<span id="qty" class="ms-2"></span></span>
+                <span class="custom-fs-9 text-secondary ms-4">사용:<span id="use" class="ms-2 text-success"></span></span>
+                <span class="custom-fs-9 text-secondary ms-4">잔여:<span id="remainder" class="ms-2 text-primary"></span></span>
+            </div>
+        </div>
+    </th:block>
+</html>

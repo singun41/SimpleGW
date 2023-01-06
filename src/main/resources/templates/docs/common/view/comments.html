@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <th:block th:fragment="comments">
+        <!--
+            아래 스크립트를 포함시켜야 함.
+            <script defer th:src="@{/js/docs/common/comments.js}"></script>
+        -->
+        <div class="card shadow bg-body rounded-3">
+            <div class="card-header">
+                <div class="card-header-icon"><i class="fa-solid fa-comment"></i></div><span class="card-header-text">댓글</span>
+            </div>
+            <div class="card-body">
+                <div id="comments"></div>
+                <div class="row mt-5">
+                    <div class="input-group">
+                        <textarea class="form-control" rows="2" id="inputComment"></textarea>
+                        <button class="btn btn-outline-success px-3" type="button" onclick="saveComment()"><i class="fa-solid fa-check"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </th:block>
+</html>

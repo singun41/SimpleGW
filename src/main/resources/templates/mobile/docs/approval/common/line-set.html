@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <th:block th:fragment="line-set">
+        <div class="modal fade" id="lineSet" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header fs-5">
+                        <span class="text-secondary"><i class="fa-solid fa-file-signature me-1"></i><span>결재선 지정</span></span>
+                    </div>
+                    <div class="modal-body">
+                        <div class="input-group mb-3">
+                            <select class="form-select text-center" id="lines" onchange="getLineDetails()"></select>
+                        </div>
+                        <div class="input-group mb-3">
+                            <select class="form-select text-center" onchange="getTeamMembers(this)">
+                                <option value="" selected disabled>부서 선택</option>
+                                <option th:each="team : ${teams}" th:value="${team}" th:text="${team}"></option>
+                            </select>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-12">
+                                <table class="table">
+                                    <thead id="theadLine" class="table-light d-none">
+                                        <tr class="text-secondary text-center">
+                                            <td>멤버</td>
+                                            <td>결재</td>
+                                            <td>참조</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="list"></tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <table class="table">
+                                    <thead class="table-light">
+                                        <tr class="text-secondary text-center">
+                                            <td>결재</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="lineSetApprover"></tbody>
+                                </table>
+                            </div>
+                            <div class="col-6">
+                                <table class="table">
+                                    <thead class="table-light">
+                                        <tr class="text-secondary text-center">
+                                            <td>참조</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="lineSetReferrer"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-between fs-5">
+                        <a role="button" onclick="reset()" class="text-decoration-none-none text-secondary me-3"><i class="fa-solid fa-arrow-rotate-left"></i></a>
+                        <a role="button" onclick="apply()" class="text-decoration-none-none text-secondary me-3" data-bs-dismiss="modal"><i class="fa-solid fa-check"></i></a>
+                    </div>
+                </div>
+            </div>
+          </div>
+    </th:block>
+</html>

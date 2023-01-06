@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <th:block th:fragment="view">
+        <span class="d-none" th:text="${#strings.toLowerCase(docs.type.name())}" id="docsType"></span>
+        <span class="d-none" th:text="${docs.id}" id="docsId"></span>
+        
+        <div class="mb-3">
+            <h5 class="text-center" th:text="${docs.title}"></h5>
+        </div>
+    </th:block>
+</html>

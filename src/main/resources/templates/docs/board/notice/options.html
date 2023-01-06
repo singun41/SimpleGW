@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <th:block th:fragment="options">
+        <!--
+            아래 스크립트를 포함시켜야 함.
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/themes/dark.min.css">
+
+            <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.2/dayjs.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.2/locale/ko.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/l10n/ko.min.js"></script>
+            
+            <script defer th:src="@{/js/docs/board/notice/options.js}"></script>
+        -->
+        <div class="card shadow bg-body rounded-3 mb-5">
+            <div class="card-header">
+                <div class="card-header-icon"><i class="fa-solid fa-gears"></i></div><span class="card-header-text">옵션</span>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="chkDueDate" onclick="setDueDate(this)">
+                            <label class="form-check-label text-secondary custom-fs-8" for="chkDueDate">메인화면 게시 종료일</label>
+                        </div>
+                        <div class="input-group input-group-sm">
+                            <span class="input-group-text"><i class="fa-solid fa-calendar-day"></i></span>
+                            <input type="text" class="form-control text-center input-date" id="inputDueDate" placeholder="YYYY. MM. DD." autocomplete="off">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </th:block>
+</html>

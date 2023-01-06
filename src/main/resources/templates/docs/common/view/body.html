@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <th:block th:fragment="body">
+        <div class="row px-2 py-3"><h5 class="text-center" id="docsTitle" th:text="${docs.title}"></h5></div>
+        <br>
+        <div class="row px-4">
+            <!-- container로 감싸야 이미지와 텍스트간 라인피드가 제대로 렌더링된다. -->
+            <div class="container-fluid" id="docsContent" th:utext="${docs.content}"></div>
+        </div>
+    </th:block>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <th:block th:fragment="modify">
+        <span class="d-none" th:text="${docs.id}" id="docsId"></span>
+        <span class="d-none" th:text="${#strings.toLowerCase(docs.type.name())}" id="docsType"></span>
+        
+        <div class="mb-3">
+            <input type="text" class="form-control text-center" th:value="${docs.title}" id="title" placeholder="제목을 입력하세요." autocomplete="off">
+        </div>
+        <div class="mb-3">
+            <textarea class="form-control" id="content" rows="12" th:text="${docs.content}" placeholder="내용을 입력하세요." autocomplete="off"></textarea>
+        </div>
+        <div class="mb-3">
+            <input type="file" class="form-control" id="attachments" accept="*/*" multiple>
+        </div>
+    </th:block>
+</html>

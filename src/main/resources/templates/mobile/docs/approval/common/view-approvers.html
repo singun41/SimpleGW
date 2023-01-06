@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <th:block th:fragment="approvers">
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <span class="text-secondary">결재</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6 mb-1" th:each="approver : ${docs.line.approvers}">
+                                <span th:text="|${approver.seq}. ${approver.jobTitle} ${approver.name}|"></span>
+                                <i th:if="${approver.sign.title} == '승인'" class="fa-solid fa-check text-success"></i>
+                                <i th:if="${approver.sign.title} == '반려'" class="fa-solid fa-ban text-danger"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer fs-5" th:if="${isCurrentApprover} == true">
+                        <span class="float-start"><a role="button" onclick="rejected()" class="text-decoration-none text-secondary"><i class="fa-solid fa-ban me-2"></i>반려</a></span>
+                        <span class="float-end"><a role="button" onclick="confirmed()" class="text-decoration-none text-success"><i class="fa-solid fa-check me-2"></i>승인</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </th:block>
+</html>

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <th:block th:fragment="edit">
+        <div class="card shadow bg-body rounded-3 mb-5">
+            <div class="card-header">
+                <div class="card-header-icon"><i class="fa-solid fa-wrench"></i></div><span class="card-header-text">편집</span>
+                <span class="float-end">
+                    <button class="btn btn-outline-success btn-sm custom-px-2" th:if="${isOwner} == true" onclick="editTemp()"><i class="fa-solid fa-file-pen"></i></button>
+                    <button class="btn btn-outline-danger btn-sm custom-px-2" th:if="${isOwner} == true" onclick="deleteTemp()"><i class="fa-solid fa-trash-can"></i></button>
+                </span>
+            </div>
+        </div>
+    </th:block>
+</html>

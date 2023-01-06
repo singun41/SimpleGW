@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <th:block th:fragment="schedule-details">
+        <div class="modal fade" id="scheduleDetails" data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <i class="fa-solid fa-user-group color-bs4-info me-2"></i><span class="fs-6 modal-title text-secondary">임직원 일정</span>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <table class="table table-hover table-sm">
+                                <thead>
+                                    <tr class="text-center">
+                                        <th>부서</th>
+                                        <th>이름</th>
+                                        <th>일정</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-center">
+                                    <tr th:each="list : ${scheduleMemberList}">
+                                        <td th:text="${list.team}"></td>
+                                        <td th:text="|${list.name} ${list.jobTitle}|"></td>
+                                        <td th:text="${list.type}"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </th:block>
+</html>

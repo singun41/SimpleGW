@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <th:block th:fragment="notification-approval">
+        <div class="modal fade" id="alarmApproval" data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <i class="fa-solid fa-bell color-bs4-info me-2"></i><span class="fs-6 modal-title text-secondary">시스템 알림</span>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h6 class="text-center mb-3" id="approvalContent"></h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </th:block>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <th:block th:fragment="referrers">
+        <!--
+            아래 스크립트를 포함시켜야 함.
+            <script defer th:src="@{/js/docs/board/common/referrers-view.js}"></script>
+        -->
+        <div class="card shadow bg-body rounded-3 mb-5">
+            <div class="card-header">
+                <div class="card-header-icon"><i class="fa-solid fa-file-circle-check"></i></div><span class="card-header-text">공유</span>
+                <span class="float-end">
+                    <button class="btn btn-outline-success btn-sm btn-icon" onclick="openReferrerAdd()"><i class="fa-solid fa-plus"></i></button>
+                </span>
+            </div>
+            <div class="card-body">
+                <div class="row" id="referrerList">
+                    <div class="col-4 mt-2 text-center custom-fs-9 custom-col-padding" th:each="referrer : ${docs.referrers}">
+                        <span th:text="|${referrer.jobTitle} ${referrer.name}|"></span>
+                        <i th:if="${referrer.checked}" class="fa-solid fa-check text-secondary"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </th:block>
+</html>

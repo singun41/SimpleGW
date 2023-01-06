@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <th:block th:fragment="referrers">
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <span class="text-secondary">참조</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6 mb-1" th:each="referrer : ${docs.line.referrers}">
+                                <span th:text="|${referrer.jobTitle} ${referrer.name}|"></span>
+                                <i th:if="${referrer.checked}" class="fa-solid fa-check text-secondary"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </th:block>
+</html>

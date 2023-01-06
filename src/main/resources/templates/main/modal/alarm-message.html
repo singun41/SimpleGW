@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <th:block th:fragment="alarm-message">
+        <div class="modal fade" id="alarmMessage" data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <i class="fa-solid fa-clock color-bs4-info me-2"></i><span class="fs-6 modal-title text-secondary">알람</span>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h5 class="text-center mb-3" id="alarmTitle"></h5>
+                        <textarea class="form-control" rows="5" id="alarmRemarks" placeholder="내용 없음" readonly></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </th:block>
+</html>

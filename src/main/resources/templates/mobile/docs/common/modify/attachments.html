@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <th:block th:fragment="attachments">
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <span class="text-secondary custom-fs-9">기존 첨부</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="row mb-2" th:each="attachments : ${attachmentsList}">
+                            <span>
+                                <button type="button" class="btn btn-outline-secondary btn-sm me-2" th:attr="onclick=|deleteFile('${attachments.docsId}/${attachments.seq}/${attachments.conversionName}', this)|"><i class="fa-solid fa-trash-can"></i></button>
+                                <label th:text="${attachments.originalName}" class="col-form-label col-form-label-sm custom-fs-8"></label>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </th:block>
+</html>

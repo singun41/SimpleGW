@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <th:block th:fragment="rendering-msg">
+        <div class="modal fade" id="renderingModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span><i class="fa-solid fa-spinner color-bs4-info me-2"></i><span class="fs-6 modal-title text-secondary">데이터를 렌더링하는 중입니다.</span></span>
+                        <div class="spinner-border text-primary" role="status"></div>
+                    </div>
+                    <div class="modal-body"></div>
+                </div>
+            </div>
+        </div>
+    </th:block>
+</html>

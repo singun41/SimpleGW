@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <th:block th:fragment="page-title">
+        <div class="row">
+            <div class="col-12 text-center fs-5">
+                <span class="float-start"><a role="button" onclick="history.back()" class="text-decoration-none text-secondary" id="btnBack"><i class="fa-solid fa-arrow-left"></i></a></span>
+                <span class="text-secondary" th:text="${pageTitle}"></span>
+                <span class="float-end"><a href="/m/main" class="text-decoration-none text-secondary"><i class="fa-solid fa-house"></i></a></span>
+            </div>
+        </div>
+    </th:block>
+</html>

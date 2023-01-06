@@ -1,0 +1,115 @@
+/* ----- ----- ----- ----- ----- scroll-bar setting ----- ----- ----- ----- ----- */
+/* Firefox */
+.scroll-area {
+    scrollbar-width: none;
+    overflow-y: auto;
+}
+
+/* Chrome, Safari, Opera*/
+::-webkit-scrollbar {
+    display: none;
+    overflow-y: auto;
+}
+/* ----- ----- ----- ----- ----- scroll-bar setting ----- ----- ----- ----- ----- */
+
+body {
+    background-color: rgb(232, 232, 232);
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.menu-btn {
+    height: 5.85rem;
+}
+
+.menu-btn > i {
+    margin-top: 0.25rem;
+    font-size: 2.5rem;
+}
+
+.menu-btn .btn-title {
+    margin-top: 0.5rem;
+    font-size: 1.05rem;
+}
+
+.card-fixed {
+    height: calc((var(--vh) * 90) - 10px);
+}
+
+.card-table {
+    padding: 0 0.5rem;
+}
+
+.card-table table {
+    margin-bottom: 0rem;
+    display: block;
+    height: calc((var(--vh) * 75) - 40px);
+    overflow-y: scroll;
+}
+
+.card-table tbody tr {
+    height: 3rem;
+    vertical-align: middle;
+}
+
+.card-table .td-title-main {
+    max-width: calc((var(--vw) * 90) - 60px);
+    padding-left: 0rem !important;
+    padding-right: 0rem !important;
+}
+
+.card-table .td-title {
+    max-width: calc((var(--vw) * 90) - 10px);
+    padding-left: 0rem !important;
+    padding-right: 0rem !important;
+}
+
+.custom-w-35 {
+    width: calc(var(--vw) * 35);
+}
+
+.custom-w-65 {
+    width: calc(var(--vw) * 65);
+}
+
+.input-date-range {
+    width: 235px;
+}
+
+.input-date-fullsize {
+    width: 100%;
+}
+
+.input-date[readonly], .input-date-range[readonly], .input-time[readonly] {
+    background-color: white;
+}
+
+.custom-fs-8 {
+    font-size: 0.85rem;
+}
+
+.custom-fs-9 {
+    font-size: 0.95rem;
+}
+
+.input-group-text-custom {
+    width: 110px;
+    color: rgba(108, 117, 125, 1);
+}
+
+img {
+    max-width: 100%;
+    max-height: calc(var(--vh) * 30);
+}
+
+/* ckeditor에서 등록한 테이블의 css가 다른 css에 핸들링 되지 않도록 추가. */
+.ckeditor-tables tbody, .ckeditor-tables tbody tr, .ckeditor-tables tbody tr td {
+    border: inherit !important;
+}
+
+.calendar-iframe {
+    display: block;
+    border: none;
+    width: 100%;
+    height: 100%;
+}

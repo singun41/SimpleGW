@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset='utf-8'>
+        <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <title>Simple GW</title>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css">
+        
+        <link rel="stylesheet" th:href="@{/css/common/common.css}">
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+
+                    <div class="card shadow bg-body rounded-3">
+                        <div class="card-header">
+                            <div class="card-header-icon"><i class="fa-solid fa-gears"></i></div><span class="card-header-text">Code edit</span>
+                            <span class="float-end">
+                                <button type="button" class="btn btn-outline-success btn-sm btn-icon" onclick="update()"><i class="fa-solid fa-check"></i></button>
+                            </span>
+                        </div>
+
+                        <div class="card-body">
+                            <div class="row mb-3">
+                                <div class="col-4">
+                                    <div class="input-group">
+                                        <span class="input-group-text input-group-text-custom">No.</span>
+                                        <input type="text" class="form-control text-center" id="id" th:value="${code.id}" readonly>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="input-group">
+                                        <span class="input-group-text input-group-text-custom">Type</span>
+                                        <input type="text" class="form-control text-center" th:value="${code.type}" readonly>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="input-group">
+                                        <span class="input-group-text input-group-text-custom">Title</span>
+                                        <input type="text" class="form-control text-center" th:value="${code.type.title}" readonly>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-4">
+                                    <div class="input-group">
+                                        <span class="input-group-text input-group-text-custom">Seq</span>
+                                        <input type="text" class="form-control text-center" id="seq" th:value="${code.seq}" autocomplete="off">
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="input-group">
+                                        <span class="input-group-text input-group-text-custom">Code</span>
+                                        <input type="text" class="form-control text-center" id="code" th:value="${code.code}" readonly>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="input-group">
+                                        <span class="input-group-text input-group-text-custom">Value</span>
+                                        <input type="text" class="form-control text-center" id="value" th:value="${code.value}" autocomplete="off">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-8">
+                                    <div class="input-group">
+                                        <span class="input-group-text input-group-text-custom">Remarks</span>
+                                        <input type="text" class="form-control text-center" id="remarks" th:value="${code.remarks}" autocomplete="off">
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="input-group">
+                                        <label class="input-group-text input-group-text-custom" for="enabled">Enabled</label>
+                                        <select class="form-select text-center" id="enabled">
+                                            <option value="1" th:selected="${code.enabled} == true">True</option>
+                                            <option value="0" th:selected="${code.enabled} == false">False</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <!-- Script -->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+
+        <script defer th:src="@{/js/common/fetch-custom.js}"></script>
+        <script defer th:src="@{/js/admin/codes/edit.js}"></script>
+    </body>
+</html>

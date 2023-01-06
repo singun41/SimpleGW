@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <th:block th:fragment="title">
+        <div class="row my-3">
+            <div class="col-3"><h5 class="text-center text-secondary" th:text="${docsType.title}"></h5></div>
+            <div class="col-9"><input type="text" class="form-control text-center" id="title" placeholder="제목을 작성하세요." autocomplete="off"></div>
+        </div>
+    </th:block>
+</html>

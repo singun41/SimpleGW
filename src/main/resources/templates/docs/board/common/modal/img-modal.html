@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <th:block th:fragment="img-modal">
+        <div class="modal fade" id="imgModal" data-bs-keyboard="true" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span class="fs-6"><i class="fa-solid fa-image color-bs4-info me-2"></i><span class="modal-title">Image</span></span>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="imgBox"></div>
+                </div>
+            </div>
+        </div>
+    </th:block>
+</html>

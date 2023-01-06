@@ -1,0 +1,42 @@
+/* ----- ----- ----- ----- ----- scroll-bar setting ----- ----- ----- ----- ----- */
+/* Firefox */
+.scroll-area {
+    scrollbar-width: none;
+    overflow-y: auto;
+}
+
+/* Chrome, Safari, Opera*/
+::-webkit-scrollbar {
+    display: none;
+    overflow-y: auto;
+}
+/* ----- ----- ----- ----- ----- scroll-bar setting ----- ----- ----- ----- ----- */
+
+.fc-col-header-cell.fc-day {
+    background-color: #dadfe1;
+}
+
+
+.fc-col-header-cell.fc-day.fc-day-sun {
+    background-color: #f1a9a0;
+}
+.fc-day-sun .fc-daygrid-day-number {
+    color: #f1a9a0;
+}
+
+
+.fc-col-header-cell.fc-day.fc-day-sat {
+    background-color: #89c4f4;
+}
+.fc-day-sat .fc-daygrid-day-number {
+    color: #89c4f4;
+}
+
+
+.fc-day-today > div {
+    background-color: #cdc7be;
+}
+
+.fc-toolbar-title, .fc-daygrid-day-number {
+    color: rgba(108, 117, 125, 1)
+}

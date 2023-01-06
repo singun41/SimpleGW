@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <th:block th:fragment="datatables">
+        <!--
+            아래 스크립트를 포함시켜야 함.
+            <link rel="stylesheet" th:href="@{/css/common/datatables-custom.css}">
+
+            <script defer th:src="@{/js/datatables/destroy.js}"></script>
+            <script defer th:src="@{/js/datatables/build.js}"></script>
+        -->
+        <table class="table table-hover" id="datatables">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>제목</th>
+                    <th>작성자</th>
+                    <th>작성일</th>
+                </tr>
+            </thead>
+            <tbody id="datalist"></tbody>
+        </table>
+    </th:block>
+</html>

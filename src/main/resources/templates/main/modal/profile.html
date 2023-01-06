@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <th:block th:fragment="profile">
+        <div class="modal fade" id="profile" data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <i class="fa-solid fa-address-card color-bs4-info me-2"></i><span class="fs-6 modal-title text-secondary">프로필</span>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row mb-3">
+                            <div class="col-12 text-center">   <!-- align-items-center로 하면 중앙 정렬이 안 됨. -->
+                                <img src="/portrait" class="img-thumbnail" id="userPortrait" onerror="this.src='/images/portrait/default.jpg';" style="height: 125px;">
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-12">
+                                <div class="input-group input-group-sm">
+                                    <input type="file" class="form-control form-control-sm" accept="image/png, image/jpeg" id="portraitInput">
+                                    <button class="btn btn-outline-success btn-icon" type="button" onclick="updateProfile()"><i class="fa-solid fa-check"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-4">
+                                <input class="form-control form-control-sm text-center" type="text" id="profileName" placeholder="Name" disabled>
+                            </div>
+                            <div class="col-8">
+                                <input class="form-control form-control-sm text-center" type="text" id="profileNameEng" placeholder="Name-eng" autocomplete="off">
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-4">
+                                <input class="form-control form-control-sm text-center" type="text" id="profileJobTitle" placeholder="Job title" disabled>
+                            </div>
+                            <div class="col-8">
+                                <input class="form-control form-control-sm text-center" type="text" id="profileTeam" placeholder="Team" disabled>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-4">
+                                <input class="form-control form-control-sm text-center" type="text" id="profileTel" placeholder="Tel" disabled>
+                            </div>
+                            <div class="col-8">
+                                <input class="form-control form-control-sm text-center" type="text" id="profileEmail" placeholder="E-mail" disabled>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-4">
+                                <input class="form-control form-control-sm text-center" type="text" id="profileMobile" placeholder="Mobile" autocomplete="off">
+                            </div>
+                            <div class="col-4">
+                                <input class="form-control form-control-sm text-center" type="text" id="profileHireDate" placeholder="Hired date" disabled>
+                            </div>
+                            <div class="col-4">
+                                <input class="form-control form-control-sm text-center" type="text" id="profileDuration" placeholder="Duration" disabled>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </th:block>
+</html>

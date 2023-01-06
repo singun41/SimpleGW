@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <th:block th:fragment="header">
+        <span class="d-none" id="docsType" th:text="${#strings.toLowerCase(docs.type)}"></span>
+
+        <div class="card-header-icon"><i class="fa-solid fa-file-pen"></i></div><span class="card-header-text">문서 수정 [<span id="docsId" th:text="${docs.id}" class="px-2"></span>]</span>
+        <span class="float-end">
+            <button type="button" class="btn btn-outline-success btn-sm btn-icon" id="btnSave" onclick="update()"><i class="fa-solid fa-check"></i></button>
+        </span>
+    </th:block>
+</html>

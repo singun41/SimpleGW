@@ -1,0 +1,22 @@
+.fc .fc-toolbar-title {
+    font-size: 1rem;
+    color: rgba(108, 117, 125, 1);
+}
+
+.fc .fc-toolbar.fc-header-toolbar {
+    margin-bottom: 0.25rem;
+}
+
+.fc table {
+    font-size: 0.85rem;
+}
+
+.fc .fc-button {
+    font-size: 0.75rem;
+    line-height: 1;
+}
+
+.fc .fc-button .fc-icon {
+    vertical-align: middle;
+    font-size: 0.75rem;
+}

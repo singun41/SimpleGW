@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset='utf-8'>
+        <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <title>Simple GW</title>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/themes/dark.min.css">
+        
+        <link rel="stylesheet" th:href="@{/css/common/common.css}">
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+
+                    <div class="card shadow bg-body rounded-3">
+                        <div class="card-header">
+                            <div class="card-header-icon"><i class="fa-solid fa-clock"></i></div><span class="card-header-text">알람 등록</span>
+                            <span class="float-end">
+                                <button type="button" class="btn btn-outline-success btn-sm btn-icon" onclick="create()"><i class="fa-solid fa-check"></i></button>
+                            </span>
+                        </div>
+
+                        <div class="card-body">
+                            <div class="row mb-3">
+                                <div class="col-6">
+                                    <div class="input-group">
+                                        <span class="input-group-text input-group-text-custom">날짜</span>
+                                        <input type="text" class="form-control text-center input-date" id="date" placeholder="YYYY. MM. DD." autocomplete="off">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="input-group">
+                                        <span class="input-group-text input-group-text-custom">시간</span>
+                                        <input type="text" class="form-control text-center input-time" id="time" placeholder="HH : mm" autocomplete="off">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-12">
+                                    <div class="input-group">
+                                        <span class="input-group-text input-group-text-custom">제목</span>
+                                        <input type="text" class="form-control text-center" id="title" placeholder="Title" autocomplete="off">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="input-group">
+                                        <span class="input-group-text input-group-text-custom">내용</span>
+                                        <textarea class="form-control" id="remarks" placeholder="필요한 경우 작성하세요." autocomplete="off" rows="5"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Script -->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/l10n/ko.min.js"></script>
+        
+        <script defer th:src="@{/js/common/fetch-custom.js}"></script>
+        <script defer th:src="@{/js/main/alarm/common.js}"></script>
+        <script defer th:src="@{/js/main/alarm/new.js}"></script>
+    </body>
+</html>

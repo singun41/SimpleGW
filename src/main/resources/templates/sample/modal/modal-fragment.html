@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <th:block th:fragment="fragment-name">
+        <div class="modal fade" id="fragmentName" data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <i class="fa-solid fa-note-sticky color-bs4-info me-2"></i><span class="fs-6 modal-title">아이콘과 제목 설정</span>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Body content...
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-success" onclick=""><i class="fa-solid fa-floppy-disk me-2"></i>저장</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </th:block>
+</html>

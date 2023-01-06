@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <th:block th:fragment="edit">
+        <!--
+            아래 스크립트를 포함시켜야 함.
+            <script defer th:src="@{/js/docs/approval/common/edit.js}"></script>
+        -->
+        <div class="card shadow bg-body rounded-3 mb-5">
+            <div class="card-header">
+                <div class="card-header-icon"><i class="fa-solid fa-wrench"></i></div><span class="card-header-text">편집</span>
+                <span class="float-end">
+                    <button class="btn btn-outline-primary btn-sm btn-icon" th:if="${isOwner} == true" onclick="copyDocs()"><i class="fa-solid fa-copy"></i></button>
+                    <button class="btn btn-outline-success btn-sm btn-icon" th:if="${isUpdatable} == true" onclick="editDocs()"><i class="fa-solid fa-file-pen"></i></button>
+                    <button class="btn btn-outline-danger btn-sm btn-icon" th:if="${isDeletable} == true" onclick="deleteDocs()"><i class="fa-solid fa-trash-can"></i></button>
+                </span>
+            </div>
+        </div>
+    </th:block>
+</html>

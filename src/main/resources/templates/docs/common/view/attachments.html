@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <th:block th:fragment="attachments">
+        <div class="card shadow bg-body rounded-3 mb-5">
+            <div class="card-header">
+                <div class="card-header-icon"><i class="fa-solid fa-file-zipper"></i></div><span class="card-header-text">첨부</span>
+            </div>
+            <div class="card-body">
+                <div class="list-group">
+                    <a th:each="attachments : ${attachmentsList}" th:href="|/attachments/${attachments.docsId}/${attachments.seq}/${attachments.conversionName}|" class="list-group-item list-group-item-action custom-fs-8" th:text="${attachments.originalName}" download></a>
+                </div>
+            </div>
+        </div>
+    </th:block>
+</html>

@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <th:block th:fragment="write">
+        <span class="d-none" th:text="${#strings.toLowerCase(docsType.name())}" id="docsType"></span>
+        
+        <div class="mb-3">
+            <input type="text" class="form-control text-center" id="title" placeholder="제목을 입력하세요." autocomplete="off">
+        </div>
+    </th:block>
+</html>

@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <th:block th:fragment="body">
+        <!--
+            아래 스크립트를 포함시켜야 함.
+            <script defer th:src="@{/js/ckeditor/config.js}"></script>
+            <script defer th:src="@{/js/ckeditor/build.js}"></script>
+        -->
+        <th:block th:replace="docs/common/write/title :: title"></th:block>
+        
+        <div class="row"><div class="col-12"><textarea id="ckeditorTextarea" th:text="${form}"></textarea></div></div>
+    </th:block>
+</html>
